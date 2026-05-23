@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "portfolio-redesign",
+    "title": "Portfolio Redesign",
+    "category": "Personal Branding",
+    "description": "A polished landing page focused on storytelling, mobile-first interactions, and case study navigation.",
+    "tags": ["Next.js", "UI/UX", "Animation"],
+    "preview": "Thiết kế lại portfolio với trải nghiệm chú trọng nội dung.",
+    "heroImage": "/images/projects/portfolio-redesign.jpg"
+  },
+  {
+    "slug": "startup-launch",
+    "title": "Startup Launch Platform",
+    "category": "Web App",
+    "description": "Thiết kế giao diện launch page cho startup, tối ưu chuyển đổi khách hàng và mobile UX.",
+    "tags": ["React", "Figma", "Performance"],
+    "preview": "Landing page giới thiệu sản phẩm với các case study thực tế.",
+    "heroImage": "/images/projects/startup-launch.jpg"
+  },
+  {
+    "slug": "e-commerce-experience",
+    "title": "E-commerce Experience",
+    "category": "E-commerce",
+    "description": "Tăng tỉ lệ chuyển đổi bằng layout sản phẩm và trải nghiệm checkout rõ ràng.",
+    "tags": ["Commerce", "Accessibility", "Animations"],
+    "preview": "Solution cho thương mại điện tử với trải nghiệm khách hàng tốt hơn.",
+    "heroImage": "/images/projects/e-commerce-experience.jpg"
+  }
+]
