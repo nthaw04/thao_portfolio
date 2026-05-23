@@ -1,16 +1,43 @@
-import { getFeaturedProjects } from "../../lib/content";
+"use client";
+
+import { useEffect, useRef } from "react";
+import { Project } from "../../types/project";
 import Link from "next/link";
 import Image from "next/image";
 import { ClientIcon as Icon } from "../shared/ClientIcon";
 import { routes } from "../../constants/routes";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export function ProjectsSection() {
-  const projects = getFeaturedProjects(4); // Or all projects if there are more
+export function ProjectsSection({ projects }: { projects: Project[] }) {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".proj-fade-in",
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%",
+          },
+        }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
   // Duplicate for smooth infinite scroll
   const repeatedProjects = [...projects, ...projects, ...projects, ...projects];
 
   return (
-    <section className="relative overflow-hidden py-12 pb-24 bg-[#fffff1]">
+    <section ref={sectionRef} className="relative overflow-hidden py-12 pb-24 bg-[#fffff1]">
       {/* Background Image Layer */}
       <div
         className="absolute inset-0 z-0 mix-blend-multiply pointer-events-none"
@@ -22,7 +49,7 @@ export function ProjectsSection() {
       />
 
       <div className="max-w-7xl mx-auto w-full">
-        <div className="relative z-10 mb-12 px-8 flex items-center justify-between text-zinc-900">
+        <div className="proj-fade-in relative z-10 mb-12 px-8 flex items-center justify-between text-zinc-900">
           <h2
             className="text-4xl md:text-5xl font-light tracking-tight"
             style={{ fontFamily: '"Noto Serif Display", serif' }}
@@ -38,7 +65,7 @@ export function ProjectsSection() {
           </Link> */}
         </div>
 
-        <div className="relative z-10 w-full">
+        <div className="proj-fade-in relative z-10 w-full">
           <style
             dangerouslySetInnerHTML={{
               __html: `

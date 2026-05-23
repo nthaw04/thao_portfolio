@@ -3,8 +3,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: 201 100% 13%;
-  --foreground: 0 0% 100%;
+  --background: 60 100% 98%;
+  --foreground: 0 0% 10%;
   --muted-foreground: 240 6% 45%;
   --primary: 0 0% 100%;
   --primary-foreground: 0 0% 4%;
@@ -34,8 +34,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: 201 100% 13%;
-    --foreground: 0 0% 100%;
+    --background: 60 100% 98%;
+    --foreground: 0 0% 10%;
   }
 }
 

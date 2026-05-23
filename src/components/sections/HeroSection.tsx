@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import { Icon } from "@iconify/react";
 import heroBg from "../../assets/backgrounds/hero/Black and White Minimalist Aesthetic Photography Collage Portfolio Presentation.png";
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -52,9 +54,11 @@ export function HeroSection() {
           className="hero-frame flex min-h-[78vh] flex-1 flex-col px-6 py-6 md:px-12 md:py-10"
           style={{ fontFamily: "var(--font-season-sans)" }}
         >
-          <nav className="hero-fade-in flex items-center justify-between text-[0.65rem] font-medium uppercase tracking-[0.32em]">
-            <span>THAO NGUYEN</span>
-            <ul className="flex items-center gap-6">
+          <nav className="hero-fade-in relative flex items-center justify-between text-[0.65rem] font-medium uppercase tracking-[0.32em]">
+            <span className="relative z-20">THAO NGUYEN</span>
+            
+            {/* Desktop Menu */}
+            <ul className="hidden items-center gap-6 md:flex">
               <li>
                 <a className="transition-opacity hover:opacity-70" href="#home">
                   Home
@@ -93,6 +97,60 @@ export function HeroSection() {
                 </a>
               </li>
             </ul>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              className="relative z-20 text-lg md:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <Icon icon="heroicons:x-mark-solid" width="24" height="24" /> : <Icon icon="heroicons:bars-3-solid" width="24" height="24" />}
+            </button>
+
+            {/* Mobile Menu Dropdown */}
+            <div
+              className={`absolute left-0 top-full z-10 flex w-full flex-col gap-6 bg-[#f8f8f8]/95 py-8 text-center shadow-sm backdrop-blur-md transition-all duration-300 md:hidden ${
+                isMobileMenuOpen
+                  ? "visible mt-2 translate-y-0 opacity-100"
+                  : "invisible mt-2 -translate-y-4 opacity-0"
+              }`}
+            >
+              <a
+                className="block transition-opacity hover:opacity-70"
+                href="#home"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home
+              </a>
+              <a
+                className="block transition-opacity hover:opacity-70"
+                href="#projects"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Projects
+              </a>
+              <a
+                className="block transition-opacity hover:opacity-70"
+                href="#about"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </a>
+              <a
+                className="block transition-opacity hover:opacity-70"
+                href="#resume"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Resume
+              </a>
+              <a
+                className="block transition-opacity hover:opacity-70"
+                href="#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact
+              </a>
+            </div>
           </nav>
           <div className="hero-fade-in mt-4 h-px w-full bg-[#2c2c2c]/75" />
 

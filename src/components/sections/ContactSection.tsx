@@ -1,10 +1,52 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function ContactSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".contact-item",
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 60%",
+          },
+        }
+      );
+      gsap.fromTo(
+        ".contact-img",
+        { opacity: 0, scale: 0.9 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 60%",
+          },
+        }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
   return (
-    <section className="relative w-full h-[80vh] min-h-[600px] text-white flex bg-[#9C1C17] overflow-hidden">
+    <section ref={sectionRef} className="relative w-full h-[80vh] min-h-[600px] text-white flex bg-[#9C1C17] overflow-hidden">
       {/* Black Background Split */}
-      <div className="absolute top-0 left-0 bottom-0 w-[45%] bg-[#111111] z-0" />
+      <div className="absolute bottom-0 left-0 top-0 z-0 w-[85%] bg-[#111111] md:w-[45%]" />
 
       {/* Main Content wrapper */}
       <div className="relative z-10 w-full h-full flex flex-col justify-between">
@@ -13,7 +55,7 @@ export function ContactSection() {
           {/* Left Text */}
           <div className="w-full md:w-[35%] flex flex-col justify-center text-white mb-10 md:mb-0 pt-10 md:pt-0">
             <h2
-              className="text-7xl md:text-8xl lg:text-[8rem] text-[#D82A24] mb-8 md:mb-12"
+              className="contact-item text-7xl md:text-8xl lg:text-[8rem] text-[#D82A24] mb-8 md:mb-12"
               style={{
                 fontFamily: '"Noto Serif Display", serif',
                 lineHeight: "1",
@@ -24,14 +66,14 @@ export function ContactSection() {
             </h2>
 
             <p
-              className="text-white/80 mb-10 md:mb-16 text-lg"
+              className="contact-item text-white/80 mb-10 md:mb-16 text-lg"
               style={{ fontFamily: "var(--font-season-sans)" }}
             >
               Thank you for viewing this portfolio!
             </p>
 
             <div
-              className="border-l-[1.5px] border-white pl-6 space-y-6 text-white/90 font-light text-base tracking-wide"
+              className="contact-item border-l-[1.5px] border-white pl-6 space-y-6 text-white/90 font-light text-base tracking-wide"
               style={{ fontFamily: "var(--font-season-sans)" }}
             >
               <p>(+84) 964 648 530</p>
@@ -41,7 +83,7 @@ export function ContactSection() {
           </div>
 
           {/* Right Image */}
-          <div className="w-full md:w-[58%] h-[50vh] md:h-[75%] lg:h-[80%] relative shadow-2xl">
+          <div className="contact-img w-full md:w-[58%] h-[50vh] md:h-[75%] lg:h-[80%] relative shadow-2xl">
             <Image
               src="/images/contact/contact.jpeg"
               alt="UX/UI Designer working"

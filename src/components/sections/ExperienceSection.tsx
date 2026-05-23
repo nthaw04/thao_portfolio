@@ -62,7 +62,7 @@ export function ExperienceSection() {
     >
       <div className="mx-auto max-w-7xl">
         <h1
-          className="text-center text-8xl leading-tight md:text-7xl mb-2 text-[#d6300c] flex justify-center"
+          className="mb-10 flex flex-wrap justify-center text-center text-6xl leading-tight text-[#d6300c] sm:text-6xl md:mb-2 md:text-7xl lg:text-8xl"
           style={{ fontFamily: "var(--font-display)" }}
         >
           <span className="inline-block">
@@ -244,7 +244,7 @@ export function ExperienceSection() {
         </div>
 
         {/* Bottom Line */}
-        <div className="w-full max-w-3xl mx-auto flex items-center relative opacity-60">
+        <div className="mx-auto mt-16 flex w-full max-w-3xl items-center relative opacity-60 md:mt-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 153 153"

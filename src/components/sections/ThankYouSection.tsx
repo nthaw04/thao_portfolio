@@ -1,8 +1,35 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function ThankYouSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".thank-letter",
+        { opacity: 0, y: 100 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          stagger: 0.1,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%",
+          },
+        }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
   return (
-    <section className="relative w-full py-32 md:py-48 flex items-center justify-center bg-[#bd1e1a] overflow-hidden">
+    <section ref={sectionRef} className="relative w-full py-32 md:py-48 flex items-center justify-center bg-[#bd1e1a] overflow-hidden">
       {/* Halftone Pattern Overlay */}
       <div
         className="absolute inset-0 opacity-15 mix-blend-multiply"
@@ -21,15 +48,15 @@ export function ThankYouSection() {
           style={{ fontFamily: '"Noto Serif Display", serif' }}
         >
           <div className="flex items-baseline justify-center relative md:-left-4">
-            <span className="text-[6rem] md:text-[12rem]">tha</span>
-            <span className="text-[7rem] md:text-[14rem] font-light -ml-1 md:-ml-2">
+            <span className="thank-letter inline-block text-[6rem] md:text-[12rem]">tha</span>
+            <span className="thank-letter inline-block text-[7rem] md:text-[14rem] font-light -ml-1 md:-ml-2">
               N
             </span>
-            <span className="text-[6rem] md:text-[13rem] italic font-light -ml-3 md:-ml-6">
+            <span className="thank-letter inline-block text-[6rem] md:text-[13rem] italic font-light -ml-3 md:-ml-6">
               k
             </span>
           </div>
-          <div className="italic font-light text-[7rem] md:text-[14rem] -mt-6 md:-mt-12 ml-24 md:ml-40">
+          <div className="thank-letter inline-block italic font-light text-[7rem] md:text-[14rem] -mt-6 md:-mt-12 ml-24 md:ml-40">
             you
           </div>
         </h2>

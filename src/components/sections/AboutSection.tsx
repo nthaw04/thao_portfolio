@@ -88,8 +88,8 @@ export function AboutSection() {
   return (
     <section ref={sectionRef} className="relative bg-[#0e0e0e] text-[#1b1b1b]">
       <div className="pointer-events-none absolute left-10 right-10 top-10 h-px bg-[#fffff1]/60" />
-      <div className="pointer-events-none absolute left-[58%] top-2 h-[calc(100%-80px)] w-px -translate-x-1/2 bg-[#fffff1]/60" />
-      <div className="pointer-events-none absolute left-[58%] top-7 -translate-x-1/2">
+      <div className="pointer-events-none absolute right-10 top-2 h-[calc(100%-80px)] w-px translate-x-1/2 bg-[#fffff1]/60 md:left-[58%] md:right-auto md:-translate-x-1/2" />
+      <div className="pointer-events-none absolute right-10 top-7 translate-x-1/2 md:left-[58%] md:right-auto md:-translate-x-1/2">
         <Image src={diamondSparkle} alt="" width={26} height={26} />
       </div>
 
@@ -97,7 +97,7 @@ export function AboutSection() {
         <div className="space-y-8 pr-6 md:col-span-7 mt-8">
           <div className="trigger-1 overflow-hidden">
             <h1
-              className="text-8xl leading-tight md:text-7xl text-[#d6300c] flex flex-wrap"
+              className="flex flex-wrap text-6xl leading-tight text-[#d6300c] sm:text-7xl md:text-8xl"
               style={{ fontFamily: "var(--font-display)" }}
             >
               <span className="inline-block">
@@ -149,7 +149,7 @@ export function AboutSection() {
           <div className="trigger-2">
             <div className="overflow-hidden">
               <h1
-                className="text-8xl leading-tight md:text-7xl text-[#d6300c] flex"
+                className="flex text-6xl leading-tight text-[#d6300c] sm:text-7xl md:text-8xl"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 <span className="inline-block">
