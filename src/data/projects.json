@@ -2,28 +2,38 @@
   {
     "slug": "portfolio-redesign",
     "title": "Portfolio Redesign",
-    "category": "Personal Branding",
-    "description": "A polished landing page focused on storytelling, mobile-first interactions, and case study navigation.",
-    "tags": ["Next.js", "UI/UX", "Animation"],
+    "category": "HappPaws",
+    "description": "Happy Paws is a comprehensive, all-in-one web platform dedicated to premium pet care. Designed with convenience in mind, it allows pet owners to seamlessly book cozy Hotel stays, schedule relaxing Spa grooming sessions, and shop for high-quality pet supplies—all in one place.",
+    "tags": ["Next.js", "Tailwind CSS", "Tanstack Query", "Three.js", "Socket.io"],
     "preview": "Thiết kế lại portfolio với trải nghiệm chú trọng nội dung.",
-    "heroImage": "/images/projects/portfolio-redesign.jpg"
+    "heroImage": "/images/projects/happypaws.png",
+    "githubUrl": "https://github.com/F5-Teams/project-frontend-web",
+    "liveUrl": "https://happy-paw-nu.vercel.app/"
   },
   {
     "slug": "startup-launch",
     "title": "Startup Launch Platform",
-    "category": "Web App",
-    "description": "Thiết kế giao diện launch page cho startup, tối ưu chuyển đổi khách hàng và mobile UX.",
-    "tags": ["React", "Figma", "Performance"],
+    "category": "MEMORA",
+    "description": "Memora is a platform where you can create a virtual memory exhibition — a 2D space where each user can decorate and arrange their memories by pictures, text.",
+    "tags": ["Next.js", "React Native", "Expo", "Figma"],
     "preview": "Landing page giới thiệu sản phẩm với các case study thực tế.",
-    "heroImage": "/images/projects/startup-launch.jpg"
+    "heroImage": "/images/projects/MEMORA.png",
+    "githubUrl": "https://github.com/MEMORA-SAFE-UR-MEMORY/Memora-LandingPage",
+    "githubUrlMobile": "https://github.com/MEMORA-SAFE-UR-MEMORY/Memora_FE",
+    "liveUrl": "https://memora-official.com/"
   },
   {
-    "slug": "e-commerce-experience",
-    "title": "E-commerce Experience",
-    "category": "E-commerce",
-    "description": "Tăng tỉ lệ chuyển đổi bằng layout sản phẩm và trải nghiệm checkout rõ ràng.",
-    "tags": ["Commerce", "Accessibility", "Animations"],
-    "preview": "Solution cho thương mại điện tử với trải nghiệm khách hàng tốt hơn.",
-    "heroImage": "/images/projects/e-commerce-experience.jpg"
+    "slug": "resq-flood-relief-system",
+    "title": "ResQ Flood Relief System",
+    "category": "RESQ",
+    "description": "RESQ is an Intelligent System for SOS Triage and Disaster Resource Allocation.",
+    "tags": ["AI", "Mesh Network", "UWB", "Vite", "Next.js", "Zustand", "Swift", "Bridgefy-SDK"],
+    "preview": "A comprehensive solution for flood relief efforts with real-time mapping and resource tracking.",
+    "heroImage": "/images/projects/ResQ.jpg",
+    "githubUrl": "https://github.com/ReQ-SOS-Mien-Trung/resq-sos-mientrung-landingpage",
+    "githubUrlClient": "https://github.com/ReQ-SOS-Mien-Trung/resq-sos-web-client",
+    "githubUrlMobile": "https://github.com/ReQ-SOS-Mien-Trung/resq-sos-mientrung-ios",
+    "liveUrl": "https://resq-sos-mientrung.vercel.app/",
+    "liveUrlClient": "https://resq-sos.vercel.app/sign-in"
   }
 ]

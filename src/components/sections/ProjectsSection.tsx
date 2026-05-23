@@ -1,20 +1,231 @@
 import { getFeaturedProjects } from "../../lib/content";
-import { ProjectCard } from "../shared/ProjectCard";
-import { SectionHeading } from "../shared/SectionHeading";
+import Link from "next/link";
+import Image from "next/image";
+import { ClientIcon as Icon } from "../shared/ClientIcon";
+import { routes } from "../../constants/routes";
 
 export function ProjectsSection() {
-  const projects = getFeaturedProjects(3);
+  const projects = getFeaturedProjects(4); // Or all projects if there are more
+  // Duplicate for smooth infinite scroll
+  const repeatedProjects = [...projects, ...projects, ...projects, ...projects];
 
   return (
-    <section className="space-y-8 py-24">
-      <SectionHeading
-        title="Featured Case Studies"
-        description="Những dự án nổi bật được trình bày dưới dạng case study và page chi tiết."
+    <section className="relative overflow-hidden py-12 pb-24 bg-[#fffff1]">
+      {/* Background Image Layer */}
+      <div
+        className="absolute inset-0 z-0 mix-blend-multiply pointer-events-none"
+        style={{
+          backgroundImage: "url('/images/backgrounds/project_bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       />
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <ProjectCard project={project} key={project.slug} />
-        ))}
+
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="relative z-10 mb-12 px-8 flex items-center justify-between text-zinc-900">
+          <h2
+            className="text-4xl md:text-5xl font-light tracking-tight"
+            style={{ fontFamily: '"Noto Serif Display", serif' }}
+          >
+            <span className="italic">projects</span> on Github
+          </h2>
+          {/* <Link
+            href="/projects"
+            className="text-sm uppercase tracking-widest text-[#AF1611] hover:text-black transition-colors"
+            style={{ fontFamily: "var(--font-season-sans)" }}
+          >
+            View all
+          </Link> */}
+        </div>
+
+        <div className="relative z-10 w-full">
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+          @keyframes infinite-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 1rem)); } 
+          }
+          .carousel-track {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            width: max-content;
+            animation: infinite-scroll 40s linear infinite;
+            padding: 2rem 0;
+          }
+          .carousel-track:hover {
+            animation-play-state: paused;
+          }
+          .carousel-item {
+            width: 320px;
+            height: 480px;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            cursor: pointer;
+            z-index: 1;
+          }
+          .carousel-item:hover {
+            width: 480px;
+            height: 520px;
+            z-index: 10;
+            transform: scale(1.05);
+          }
+          .carousel-item-inner {
+            width: 100%;
+            flex: 1; /* Automatically take remaining height */
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+          }
+          .carousel-item:hover .carousel-item-inner {
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4);
+          }
+          .carousel-item-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+          }
+          .carousel-item:hover .carousel-item-img {
+            transform: scale(1.08); /* slight inner image zoom */
+          }
+        `,
+            }}
+          />
+
+          <div className="carousel-track">
+            {repeatedProjects.map((project, idx) => (
+              <div
+                key={`${project.slug}-${idx}`}
+                className="carousel-item group flex flex-col justify-between focus:outline-none"
+              >
+                <div className="carousel-item-inner relative overflow-hidden shrink-0 bg-zinc-800">
+                  {/* Fallback image style in case heroImage is empty or 404 */}
+                  <Image
+                    src={
+                      project.heroImage ||
+                      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
+                    }
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 500px"
+                    className="carousel-item-img object-cover"
+                  />
+
+                  {/* Dark Overlay with Information */}
+                  <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center z-10 pointer-events-none">
+                    <p
+                      className="text-white text-base md:text-lg mb-4 line-clamp-3 leading-relaxed"
+                      style={{ fontFamily: "var(--font-season-sans)" }}
+                    >
+                      {project.description}
+                    </p>
+                    <div
+                      className="flex flex-wrap justify-center gap-2"
+                      style={{ fontFamily: "var(--font-season-sans)" }}
+                    >
+                      {project.tags?.map((tag: string) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 bg-white/20 text-white text-xs rounded-full font-medium tracking-wide border border-white/10"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Top Left Icons (Live URLs) */}
+                  <div className="absolute top-4 left-4 z-30 flex gap-2">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md"
+                        aria-label="Landing Page URL"
+                        title="Landing Page"
+                      >
+                        <Icon icon="lucide:external-link" width="20" />
+                      </a>
+                    )}
+                    {project.liveUrlClient && (
+                      <a
+                        href={project.liveUrlClient}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md delay-50"
+                        aria-label="Web Client URL"
+                        title="Web Client"
+                      >
+                        <Icon icon="lucide:layout-template" width="20" />
+                      </a>
+                    )}
+                  </div>
+
+                  {/* Top Right Icons (Multiple GitHub Repos) */}
+                  <div className="absolute top-4 right-4 z-30 flex gap-2">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md"
+                        aria-label="Web Repository"
+                        title="Web Repository"
+                      >
+                        <Icon icon="lucide:github" width="20" />
+                      </a>
+                    )}
+                    {project.githubUrlClient && (
+                      <a
+                        href={project.githubUrlClient}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md delay-50"
+                        aria-label="Web Client Repository"
+                        title="Web Client Repository"
+                      >
+                        <Icon icon="lucide:monitor" width="20" />
+                      </a>
+                    )}
+                    {project.githubUrlMobile && (
+                      <a
+                        href={project.githubUrlMobile}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md delay-75"
+                        aria-label="Mobile Repository"
+                        title="Mobile App Repository"
+                      >
+                        <Icon icon="lucide:smartphone" width="20" />
+                      </a>
+                    )}
+                  </div>
+
+                  {/* Main Link to Project Detail covering the card underneath icons */}
+                  <Link
+                    href={routes.projectDetail(project.slug)}
+                    className="absolute inset-0 z-20"
+                    aria-label={`View ${project.title}`}
+                  />
+                </div>
+
+                <Link
+                  href={routes.projectDetail(project.slug)}
+                  className="flex justify-between items-start text-zinc-600 group-hover:text-black transition-colors mt-4"
+                  style={{ fontFamily: "var(--font-season-sans)" }}
+                >
+                  <span className="text-sm md:text-base pr-4 leading-snug max-w-full">
+                    {project.category}
+                  </span>
+                  <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-medium mt-0.5">
+                    View Project
+                  </span>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

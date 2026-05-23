@@ -6,4 +6,9 @@ export interface Project {
   preview: string;
   tags: string[];
   heroImage: string;
+  githubUrl?: string;
+  githubUrlClient?: string;
+  githubUrlMobile?: string;
+  liveUrl?: string;
+  liveUrlClient?: string;
 }

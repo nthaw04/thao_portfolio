@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "../components/layout/Navbar";
-import { Footer } from "../components/layout/Footer";
 import { siteMeta } from "../data/site-meta";
 
 const geistSans = Geist({
@@ -13,6 +12,23 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const seasonSans = localFont({
+  variable: "--font-season-sans",
+  display: "swap",
+  src: [
+    {
+      path: "../fonts/SeasonSans-TRIAL-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/SeasonSans-TRIAL-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -28,12 +44,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${seasonSans.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-        <Navbar />
-        <div className="flex-1">{children}</div>
-        <Footer />
+      <body className="min-h-screen text-foreground" suppressHydrationWarning>
+        {children}
       </body>
     </html>
   );
