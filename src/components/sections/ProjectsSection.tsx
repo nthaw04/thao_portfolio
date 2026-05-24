@@ -28,16 +28,17 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
             trigger: sectionRef.current,
             start: "top 75%",
           },
-        }
+        },
       );
     }, sectionRef);
     return () => ctx.revert();
   }, []);
-  // Duplicate for smooth infinite scroll
-  const repeatedProjects = [...projects, ...projects, ...projects, ...projects];
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-12 pb-24 bg-[#fffff1]">
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden py-12 pb-16 bg-[#fffff1]"
+    >
       {/* Background Image Layer */}
       <div
         className="absolute inset-0 z-0 mix-blend-multiply pointer-events-none"
@@ -49,7 +50,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
       />
 
       <div className="max-w-7xl mx-auto w-full">
-        <div className="proj-fade-in relative z-10 mb-12 px-8 flex items-center justify-between text-zinc-900">
+        <div className="proj-fade-in relative z-10 mb-8 px-8 flex items-center justify-between text-zinc-900">
           <h2
             className="text-4xl md:text-5xl font-light tracking-tight"
             style={{ fontFamily: '"Noto Serif Display", serif' }}
@@ -69,34 +70,28 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
           <style
             dangerouslySetInnerHTML={{
               __html: `
-          @keyframes infinite-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-50% - 1rem)); } 
-          }
           .carousel-track {
             display: flex;
             align-items: center;
-            gap: 2rem;
-            width: max-content;
-            animation: infinite-scroll 40s linear infinite;
+            justify-content: center;
+            gap: 1.5rem;
+            width: 100%;
             padding: 2rem 0;
           }
-          .carousel-track:hover {
-            animation-play-state: paused;
-          }
           .carousel-item {
-            width: 320px;
+            flex: 1;
             height: 480px;
             transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
             position: relative;
             cursor: pointer;
             z-index: 1;
+            min-width: 0;
           }
           .carousel-item:hover {
-            width: 480px;
-            height: 520px;
+            flex: 1.5;
+            height: 500px;
             z-index: 10;
-            transform: scale(1.05);
+            transform: scale(1.02);
           }
           .carousel-item-inner {
             width: 100%;
@@ -120,7 +115,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
           />
 
           <div className="carousel-track">
-            {repeatedProjects.map((project, idx) => (
+            {projects.map((project, idx) => (
               <div
                 key={`${project.slug}-${idx}`}
                 className="carousel-item group flex flex-col justify-between focus:outline-none"
@@ -136,6 +131,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                     fill
                     sizes="(max-width: 768px) 100vw, 500px"
                     className="carousel-item-img object-cover"
+                    unoptimized={project.heroImage?.endsWith(".png")}
                   />
 
                   {/* Dark Overlay with Information */}

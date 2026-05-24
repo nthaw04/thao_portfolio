@@ -56,7 +56,7 @@ export function HeroSection() {
         >
           <nav className="hero-fade-in relative flex items-center justify-between text-[0.65rem] font-medium uppercase tracking-[0.32em]">
             <span className="relative z-20">THAO NGUYEN</span>
-            
+
             {/* Desktop Menu */}
             <ul className="hidden items-center gap-6 md:flex">
               <li>
@@ -69,7 +69,7 @@ export function HeroSection() {
                   className="transition-opacity hover:opacity-70"
                   href="#projects"
                 >
-                  Projects
+                  About
                 </a>
               </li>
               <li>
@@ -77,7 +77,7 @@ export function HeroSection() {
                   className="transition-opacity hover:opacity-70"
                   href="#about"
                 >
-                  About
+                  Projects
                 </a>
               </li>
               <li>
@@ -104,7 +104,11 @@ export function HeroSection() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? <Icon icon="heroicons:x-mark-solid" width="24" height="24" /> : <Icon icon="heroicons:bars-3-solid" width="24" height="24" />}
+              {isMobileMenuOpen ? (
+                <Icon icon="heroicons:x-mark-solid" width="24" height="24" />
+              ) : (
+                <Icon icon="heroicons:bars-3-solid" width="24" height="24" />
+              )}
             </button>
 
             {/* Mobile Menu Dropdown */}

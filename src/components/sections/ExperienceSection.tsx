@@ -38,16 +38,16 @@ export function ExperienceSection() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".exp-circle",
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          stagger: 0.2,
-          ease: "power3.out",
+          duration: 0.3,
+          stagger: 0.05,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 70%",
+            start: "top 95%",
           },
         },
       );

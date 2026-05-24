@@ -35,5 +35,19 @@
     "githubUrlMobile": "https://github.com/ReQ-SOS-Mien-Trung/resq-sos-mientrung-ios",
     "liveUrl": "https://resq-sos-mientrung.vercel.app/",
     "liveUrlClient": "https://resq-sos.vercel.app/sign-in"
+  },
+  {
+    "slug": "resq-flood-relief-system",
+    "title": "ResQ Flood Relief System",
+    "category": "RESQ",
+    "description": "RESQ is an Intelligent System for SOS Triage and Disaster Resource Allocation.",
+    "tags": ["AI", "Mesh Network", "UWB", "Vite", "Next.js", "Zustand", "Swift", "Bridgefy-SDK"],
+    "preview": "A comprehensive solution for flood relief efforts with real-time mapping and resource tracking.",
+    "heroImage": "/images/projects/ResQ.jpg",
+    "githubUrl": "https://github.com/ReQ-SOS-Mien-Trung/resq-sos-mientrung-landingpage",
+    "githubUrlClient": "https://github.com/ReQ-SOS-Mien-Trung/resq-sos-web-client",
+    "githubUrlMobile": "https://github.com/ReQ-SOS-Mien-Trung/resq-sos-mientrung-ios",
+    "liveUrl": "https://resq-sos-mientrung.vercel.app/",
+    "liveUrlClient": "https://resq-sos.vercel.app/sign-in"
   }
 ]

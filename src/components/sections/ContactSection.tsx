@@ -24,7 +24,7 @@ export function ContactSection() {
             trigger: sectionRef.current,
             start: "top 60%",
           },
-        }
+        },
       );
       gsap.fromTo(
         ".contact-img",
@@ -38,15 +38,18 @@ export function ContactSection() {
             trigger: sectionRef.current,
             start: "top 60%",
           },
-        }
+        },
       );
     }, sectionRef);
     return () => ctx.revert();
   }, []);
   return (
-    <section ref={sectionRef} className="relative w-full h-[80vh] min-h-[600px] text-white flex bg-[#9C1C17] overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative w-full h-[80vh] min-h-[600px] text-white flex bg-[#9C1C17] overflow-hidden"
+    >
       {/* Black Background Split */}
-      <div className="absolute bottom-0 left-0 top-0 z-0 w-[85%] bg-[#111111] md:w-[45%]" />
+      <div className="absolute bottom-0 left-0 top-0 z-0 w-[85%] bg-[#111111] md:w-[60%]" />
 
       {/* Main Content wrapper */}
       <div className="relative z-10 w-full h-full flex flex-col justify-between">
@@ -83,12 +86,13 @@ export function ContactSection() {
           </div>
 
           {/* Right Image */}
-          <div className="contact-img w-full md:w-[58%] h-[50vh] md:h-[75%] lg:h-[80%] relative shadow-2xl">
+          <div className="contact-img w-full md:w-[60%] h-[50vh] md:h-[75%] lg:h-[80%] relative shadow-2xl">
             <Image
               src="/images/contact/contact.jpeg"
               alt="UX/UI Designer working"
               fill
-              className="object-cover object-[center_70%]"
+              sizes="(max-width: 768px) 100vw, 60vw"
+              className="object-cover object-[center_50%] md:object-[center_40%]"
             />
           </div>
         </div>

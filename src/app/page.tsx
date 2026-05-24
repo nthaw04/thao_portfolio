@@ -1,10 +1,11 @@
 import { AboutSection } from "../components/sections/AboutSection";
 import { ContactSection } from "../components/sections/ContactSection";
 import { HeroSection } from "../components/sections/HeroSection";
-import { ProjectsSection } from "../components/sections/ProjectsSection";
 import { ExperienceSection } from "../components/sections/ExperienceSection";
-import { ProjectsCoverSection } from "../components/sections/ProjectsCoverSection";
+import { FigmaProjectsSection } from "../components/sections/FigmaProjectsSection";
 import { ThankYouSection } from "../components/sections/ThankYouSection";
+import { ProjectsSection } from "../components/sections/ProjectsSection";
+import { ProjectsCoverSection } from "../components/sections/ProjectsCoverSection";
 import { getFeaturedProjects } from "../lib/content";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <AboutSection />
       <ExperienceSection />
       <ProjectsCoverSection />
+      <FigmaProjectsSection />
       <ProjectsSection projects={projects} />
       <ContactSection />
       <ThankYouSection />
