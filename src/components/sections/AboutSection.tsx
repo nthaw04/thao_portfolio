@@ -16,13 +16,12 @@ export function AboutSection() {
     const ctx = gsap.context(() => {
       // Animation chữ "About Me"
       gsap.fromTo(
-        ".about-letter-1",
-        { y: 100, opacity: 0 },
+        ".about-title-1",
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 1,
-          stagger: 0.05,
           ease: "power4.out",
           scrollTrigger: {
             trigger: ".trigger-1",
@@ -33,13 +32,12 @@ export function AboutSection() {
 
       // Animation chữ "Education"
       gsap.fromTo(
-        ".about-letter-2",
-        { y: 100, opacity: 0 },
+        ".about-title-2",
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 1,
-          stagger: 0.05,
           ease: "power4.out",
           scrollTrigger: {
             trigger: ".trigger-2",
@@ -97,35 +95,27 @@ export function AboutSection() {
         <div className="space-y-8 pr-6 md:col-span-7 mt-8">
           <div className="trigger-1 overflow-hidden">
             <h1
-              className="flex flex-wrap text-6xl leading-tight text-[#d6300c] sm:text-7xl md:text-8xl"
+              className="about-title-1 flex flex-wrap text-6xl leading-tight text-[#d6300c] sm:text-7xl md:text-8xl"
               style={{ fontFamily: "var(--font-display)" }}
             >
               <span className="inline-block">
                 <span
-                  className="about-letter-1 inline-block italic font-light"
+                  className="italic font-light"
                   style={{ fontFamily: '"Noto Serif Display", serif' }}
                 >
                   A
                 </span>
-                {"bout".split("").map((c, i) => (
-                  <span key={`a-${i}`} className="about-letter-1 inline-block">
-                    {c}
-                  </span>
-                ))}
+                bout
               </span>
               <span className="inline-block w-4" aria-hidden="true" />
               <span className="inline-block">
                 <span
-                  className="about-letter-1 inline-block italic font-light"
+                  className="italic font-light"
                   style={{ fontFamily: '"Noto Serif Display", serif' }}
                 >
                   M
                 </span>
-                {"e".split("").map((c, i) => (
-                  <span key={`m-${i}`} className="about-letter-1 inline-block">
-                    {c}
-                  </span>
-                ))}
+                e
               </span>
             </h1>
 
@@ -149,24 +139,17 @@ export function AboutSection() {
           <div className="trigger-2">
             <div className="overflow-hidden">
               <h1
-                className="flex text-6xl leading-tight text-[#d6300c] sm:text-7xl md:text-8xl"
+                className="about-title-2 flex text-6xl leading-tight text-[#d6300c] sm:text-7xl md:text-8xl"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 <span className="inline-block">
                   <span
-                    className="about-letter-2 inline-block italic font-light"
+                    className="italic font-light"
                     style={{ fontFamily: '"Noto Serif Display", serif' }}
                   >
                     E
                   </span>
-                  {"ducation".split("").map((c, i) => (
-                    <span
-                      key={`e-${i}`}
-                      className="about-letter-2 inline-block"
-                    >
-                      {c}
-                    </span>
-                  ))}
+                  ducation
                 </span>
               </h1>
             </div>
