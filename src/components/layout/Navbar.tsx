@@ -31,6 +31,9 @@ export function Navbar() {
               key={item.href}
               href={item.href}
               className="text-sm text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+              {...(item.href.startsWith("http")
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
             >
               {item.label}
             </Link>

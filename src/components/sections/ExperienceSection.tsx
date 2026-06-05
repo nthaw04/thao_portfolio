@@ -7,24 +7,59 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const experiences = [
   {
     num: "01",
-    title: "Frontend Developer",
+    title: "UI/UX Designer & Frontend Developer",
     desc: "01/2025 - 04/2025",
     location: "FPT Software Academy | Ho Chi Minh City, Vietnam",
+    project: "Claim Request System | Team Size: 5",
     details: [
-      "Developed scalable web interfaces using ReactJS and TypeScript, ensuring type safety, component reusability, and high performance.",
-      "Designed UI/UX layouts, creating wireframes and prototypes to validate design concepts before translating them into responsive code.",
-      "Authored project documentation, including technical specifications and feature guides, to ensure code maintainability and clear system understanding.",
+      <span key="1">
+        <strong className="text-white font-semibold">User Problem:</strong>{" "}
+        Inefficient, paper-heavy claim submission and approval processes causing
+        administrative delays and fragmented workflows within the organization.
+      </span>,
+      <span key="2">
+        <strong className="text-white font-semibold">Solution:</strong>{" "}
+        Formulated clear multi-role approval paths via wireframes and developed
+        a centralized web application using ReactJS and TypeScript.
+      </span>,
+      <span key="3">
+        <strong className="text-white font-semibold">Result:</strong> Eliminated
+        fragmented paperwork, ensured strict type safety with reusable
+        components, and significantly reduced overall approval turnaround time.
+      </span>,
     ],
   },
   {
     num: "02",
-    title: "UX/UI Designer",
+    title: "UI/UX Designer",
     desc: "06/2025 - 01/2026",
     location: "MindX Technology School | Ho Chi Minh City, Vietnam",
+    project: "Murror AI Companion App Revamp | UI/UX Case Study | Team Size: 5",
     details: [
-      "Translated AI constraints into UX solutions: Analyzed AI-driven symptom detection mechanisms (via Apple Watch biometrics) to design intuitive notification flows that alert users without causing panic.",
-      "Designed watchOS Interfaces: Created high-fidelity screens adhering strictly to Apple’s Human Interface Guidelines (HIG), focusing on legibility, high contrast, and micro-interactions suitable for emergency contexts.",
-      'Optimized User Journey: Mapped out the end-to-end user flow for the "Crisis Alert" feature, streamlining the interaction from passive AI detection to active user response to ensure immediate access to support.',
+      <span key="1">
+        <strong className="text-white font-semibold">
+          Target User & Pain Point:
+        </strong>{" "}
+        Gen Z and Millennials (ages 18-32) experiencing sudden stress or panic
+        attacks need immediate mental health support, but manually opening and
+        navigating an app during an emotional crisis causes cognitive overload.
+      </span>,
+      <span key="2">
+        <strong className="text-white font-semibold">
+          Design Decisions & Solution:
+        </strong>{" "}
+        Architected a watchOS &quot;Crisis Support&quot; ecosystem leveraging
+        Apple HealthKit (Heart Rate & HRV) for passive anomaly detection. Mapped
+        a frictionless 4-step intervention flow (Detect - Analyze - Gentle Alert
+        - Guide), utilizing high-contrast UI and haptic vibrations to ensure
+        extreme usability without requiring visual focus.
+      </span>,
+      <span key="3">
+        <strong className="text-white font-semibold">Final Impact:</strong>{" "}
+        Delivered an end-to-end, empathetic emergency journey that successfully
+        minimized user cognitive load, transforming complex biometric data into
+        safe, automated psychological interventions.
+      </span>,
     ],
   },
 ];
@@ -104,6 +139,18 @@ export function ExperienceSection() {
                 <span>{experiences[1].desc}</span>
                 <span className="mx-2 text-white/40">|</span>
                 <span>{experiences[1].location}</span>
+                {experiences[1].project && (
+                  <>
+                    <br />
+                    <span className="mt-2 inline-block">
+                      <strong className="text-white font-semibold">
+                        {experiences[1].project.split(" | ")[0]}
+                      </strong>{" "}
+                      |{" "}
+                      {experiences[1].project.split(" | ").slice(1).join(" | ")}
+                    </span>
+                  </>
+                )}
               </p>
               <ul className="text-base text-white/90 leading-relaxed list-disc pl-5 space-y-3">
                 {experiences[1].details.map((item, i) => (
@@ -188,6 +235,18 @@ export function ExperienceSection() {
                 <span>{experiences[0].desc}</span>
                 <span className="mx-2 text-white/40">|</span>
                 <span>{experiences[0].location}</span>
+                {experiences[0].project && (
+                  <>
+                    <br />
+                    <span className="mt-2 inline-block">
+                      <strong className="text-white font-semibold">
+                        {experiences[0].project.split(" | ")[0]}
+                      </strong>{" "}
+                      |{" "}
+                      {experiences[0].project.split(" | ").slice(1).join(" | ")}
+                    </span>
+                  </>
+                )}
               </p>
               <ul className="text-base text-white/90 leading-relaxed list-disc pl-5 space-y-3">
                 {experiences[0].details.map((item, i) => (
@@ -230,7 +289,20 @@ export function ExperienceSection() {
                   }`}
                 >
                   <div className="text-sm font-light leading-relaxed text-white/80 pb-5 text-left">
-                    <p className="mb-4 text-white/60 italic">{exp.location}</p>
+                    <p className="mb-4 text-white/60 italic">
+                      {exp.location}
+                      {exp.project && (
+                        <>
+                          <br />
+                          <span className="not-italic mt-2 inline-block">
+                            <strong className="text-white font-semibold">
+                              {exp.project.split(" | ")[0]}
+                            </strong>{" "}
+                            | {exp.project.split(" | ").slice(1).join(" | ")}
+                          </span>
+                        </>
+                      )}
+                    </p>
                     <ul className="list-disc pl-5 space-y-3">
                       {exp.details.map((item, i) => (
                         <li key={i}>{item}</li>

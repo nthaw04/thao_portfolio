@@ -127,13 +127,13 @@ export function AboutSection() {
             </h2>
           </div>
           <p className="about-fade-in max-w-2xl text-lg leading-7 text-[#fffff1]">
-            With a Software Engineering and UX/UI background, experienced in
-            bridging the gap between creative concepts and code. My core
-            strength lies in designing user-centric interfaces that are
-            technically feasible and implementation-ready. I contribute by
-            delivering high-quality product designs that optimize user
-            experience while streamlining collaboration between design and
-            development teams.
+            With a dual background in Software Engineering and UX/UI Design, I
+            combine my design strengths with a deep understanding of frontend
+            constraints and implementation. This allows me to deliver
+            user-centered, technically feasible interfaces. I meticulously
+            validate requirements and collaborate effectively with developers,
+            ensuring a seamless, optimized workflow from prototype to
+            production.
           </p>
 
           <div className="trigger-2">

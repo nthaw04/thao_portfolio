@@ -83,7 +83,9 @@ export function HeroSection() {
               <li>
                 <a
                   className="transition-opacity hover:opacity-70"
-                  href="#resume"
+                  href="https://drive.google.com/file/d/16clsoRooBAj8SQXjnMtLurCuIhwbEcZk/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Resume
                 </a>
@@ -142,7 +144,9 @@ export function HeroSection() {
               </a>
               <a
                 className="block transition-opacity hover:opacity-70"
-                href="#resume"
+                href="https://drive.google.com/file/d/16clsoRooBAj8SQXjnMtLurCuIhwbEcZk/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Resume

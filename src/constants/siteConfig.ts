@@ -6,7 +6,10 @@ export const siteConfig = {
   navItems: [
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
-    { label: "Resume", href: "/resume" },
+    {
+      label: "Resume",
+      href: "https://drive.google.com/file/d/16clsoRooBAj8SQXjnMtLurCuIhwbEcZk/view?usp=sharing",
+    },
     { label: "About", href: "/about" },
   ],
 };
