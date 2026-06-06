@@ -23,13 +23,17 @@ export function ProjectsCoverSection() {
             trigger: sectionRef.current,
             start: "top 70%",
           },
-        }
+        },
       );
     }, sectionRef);
     return () => ctx.revert();
   }, []);
   return (
-    <section ref={sectionRef} className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-[#AF1611]">
+    <section
+      id="projects"
+      ref={sectionRef}
+      className="relative w-full min-h-[60vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-[#AF1611]"
+    >
       {/* Halftone Pattern Overlay */}
       <div
         className="absolute inset-0 opacity-15"

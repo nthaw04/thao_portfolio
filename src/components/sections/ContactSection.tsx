@@ -45,6 +45,7 @@ export function ContactSection() {
   }, []);
   return (
     <section
+      id="contact"
       ref={sectionRef}
       className="relative w-full h-[80vh] min-h-[600px] text-white flex bg-[#9C1C17] overflow-hidden"
     >

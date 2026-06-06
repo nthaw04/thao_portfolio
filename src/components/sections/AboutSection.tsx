@@ -84,7 +84,11 @@ export function AboutSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-[#0e0e0e] text-[#1b1b1b]">
+    <section
+      id="about"
+      ref={sectionRef}
+      className="relative bg-[#0e0e0e] text-[#1b1b1b]"
+    >
       <div className="pointer-events-none absolute left-10 right-10 top-10 h-px bg-[#fffff1]/60" />
       <div className="pointer-events-none absolute right-10 top-2 h-[calc(100%-80px)] w-px translate-x-1/2 bg-[#fffff1]/60 md:left-[58%] md:right-auto md:-translate-x-1/2" />
       <div className="pointer-events-none absolute right-10 top-7 translate-x-1/2 md:left-[58%] md:right-auto md:-translate-x-1/2">

@@ -9,7 +9,7 @@ import { ProjectsCoverSection } from "../components/sections/ProjectsCoverSectio
 import { getFeaturedProjects } from "../lib/content";
 
 export default function Home() {
-  const projects = getFeaturedProjects(4);
+  const projects = getFeaturedProjects(3);
 
   return (
     <main>

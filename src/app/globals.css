@@ -2,6 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;1,300&display=swap");
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: 60 100% 98%;
   --foreground: 0 0% 10%;

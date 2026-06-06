@@ -96,6 +96,112 @@ export function ExperienceSection() {
       className="relative w-full bg-[#0e0e0e] px-6 pt-4 pb-12 md:px-12 text-[#fffff1] overflow-hidden"
     >
       <div className="mx-auto max-w-7xl">
+        {/* SKILLS & TOOLS section */}
+        <div className="mb-24 mt-10">
+          <div className="mb-16 h-px w-full bg-white/20"></div>
+
+          <h2
+            className="mb-12 flex flex-wrap justify-center text-center text-5xl leading-tight text-[#d6300c] sm:text-5xl md:text-6xl"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            <span className="inline-block">
+              <span
+                className="italic font-light"
+                style={{ fontFamily: '"Noto Serif Display", serif' }}
+              >
+                S
+              </span>
+              kills &amp; Tools
+            </span>
+          </h2>
+
+          <div className="mx-auto max-w-4xl space-y-8">
+            <div className="flex flex-col md:flex-row md:items-start gap-4">
+              <h3 className="w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
+                UX Skills:
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  "User Flow",
+                  "Usability Testing",
+                  "Interaction Design",
+                  "Wireframing",
+                  "Problem Solving",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors px-4 py-2 text-sm font-light tracking-wide text-[#fffff1]"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row md:items-start gap-4">
+              <h3 className="w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
+                UI Skills:
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  "High-Fidelity Design",
+                  "Prototyping",
+                  "Design Systems",
+                  "Responsive Design",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors px-4 py-2 text-sm font-light tracking-wide text-[#fffff1]"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row md:items-start gap-4">
+              <h3 className="w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
+                Frontend:
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  "Design-to-Code Translation",
+                  "Responsive Web Development",
+                  "UI Component Building",
+                  "ReactJS",
+                  "Next.js",
+                  "TypeScript",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors px-4 py-2 text-sm font-light tracking-wide text-[#fffff1]"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row md:items-start gap-4">
+              <h3 className="w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
+                Tools:
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {["Figma", "VS Code", "Git/GitHub", "Jira"].map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors px-4 py-2 text-sm font-light tracking-wide text-[#fffff1]"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mb-16 h-px w-full bg-white/20"></div>
+
         <h1
           className="mb-10 flex flex-wrap justify-center text-center text-6xl leading-tight text-[#d6300c] sm:text-6xl md:mb-2 md:text-7xl lg:text-8xl"
           style={{ fontFamily: "var(--font-display)" }}

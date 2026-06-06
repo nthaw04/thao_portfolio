@@ -10,6 +10,18 @@ export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = e.currentTarget.getAttribute("href");
+    if (href?.startsWith("#")) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+      setIsMobileMenuOpen(false);
+    }
+  };
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Animation cho từng chữ cái của "PORTfolio"
@@ -45,7 +57,11 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen text-[#1c1c1c]">
+    <section
+      id="home"
+      ref={sectionRef}
+      className="relative min-h-screen text-[#1c1c1c]"
+    >
       <div className="absolute inset-0">
         <Image src={heroBg} alt="" fill className="object-cover" priority />
       </div>
@@ -60,14 +76,19 @@ export function HeroSection() {
             {/* Desktop Menu */}
             <ul className="hidden items-center gap-6 md:flex">
               <li>
-                <a className="transition-opacity hover:opacity-70" href="#home">
+                <a
+                  className="transition-opacity hover:opacity-70"
+                  href="#home"
+                  onClick={handleScroll}
+                >
                   Home
                 </a>
               </li>
               <li>
                 <a
                   className="transition-opacity hover:opacity-70"
-                  href="#projects"
+                  href="#about"
+                  onClick={handleScroll}
                 >
                   About
                 </a>
@@ -75,7 +96,8 @@ export function HeroSection() {
               <li>
                 <a
                   className="transition-opacity hover:opacity-70"
-                  href="#about"
+                  href="#projects"
+                  onClick={handleScroll}
                 >
                   Projects
                 </a>
@@ -94,6 +116,7 @@ export function HeroSection() {
                 <a
                   className="transition-opacity hover:opacity-70"
                   href="#contact"
+                  onClick={handleScroll}
                 >
                   Contact
                 </a>
@@ -124,23 +147,23 @@ export function HeroSection() {
               <a
                 className="block transition-opacity hover:opacity-70"
                 href="#home"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={handleScroll}
               >
                 Home
               </a>
               <a
                 className="block transition-opacity hover:opacity-70"
-                href="#projects"
-                onClick={() => setIsMobileMenuOpen(false)}
+                href="#about"
+                onClick={handleScroll}
               >
-                Projects
+                About
               </a>
               <a
                 className="block transition-opacity hover:opacity-70"
-                href="#about"
-                onClick={() => setIsMobileMenuOpen(false)}
+                href="#projects"
+                onClick={handleScroll}
               >
-                About
+                Projects
               </a>
               <a
                 className="block transition-opacity hover:opacity-70"
@@ -154,7 +177,7 @@ export function HeroSection() {
               <a
                 className="block transition-opacity hover:opacity-70"
                 href="#contact"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={handleScroll}
               >
                 Contact
               </a>
