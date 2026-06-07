@@ -115,6 +115,16 @@ export function HeroSection() {
               <li>
                 <a
                   className="transition-opacity hover:opacity-70"
+                  href="https://drive.google.com/file/d/1YR96PiGpz5J39jOCeUTs8UXNl-YXrpaz/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CV
+                </a>
+              </li>
+              <li>
+                <a
+                  className="transition-opacity hover:opacity-70"
                   href="#contact"
                   onClick={handleScroll}
                 >
@@ -138,11 +148,10 @@ export function HeroSection() {
 
             {/* Mobile Menu Dropdown */}
             <div
-              className={`absolute left-0 top-full z-10 flex w-full flex-col gap-6 bg-[#f8f8f8]/95 py-8 text-center shadow-sm backdrop-blur-md transition-all duration-300 md:hidden ${
-                isMobileMenuOpen
+              className={`absolute left-0 top-full z-10 flex w-full flex-col gap-6 bg-[#f8f8f8]/95 py-8 text-center shadow-sm backdrop-blur-md transition-all duration-300 md:hidden ${isMobileMenuOpen
                   ? "visible mt-2 translate-y-0 opacity-100"
                   : "invisible mt-2 -translate-y-4 opacity-0"
-              }`}
+                }`}
             >
               <a
                 className="block transition-opacity hover:opacity-70"
@@ -173,6 +182,15 @@ export function HeroSection() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Resume
+              </a>
+              <a
+                className="block transition-opacity hover:opacity-70"
+                href="YOUR_GOOGLE_DRIVE_CV_LINK_HERE"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                CV
               </a>
               <a
                 className="block transition-opacity hover:opacity-70"

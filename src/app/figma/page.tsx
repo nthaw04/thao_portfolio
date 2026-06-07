@@ -10,9 +10,9 @@ import folderIcon3 from "../../assets/elements/folder_3.svg";
 
 const folders = [
   { id: 1, title: "(01) THOOI", icon: folderIcon1 },
-  { id: 2, title: "(02) PROJECT 2", icon: folderIcon2 },
-  { id: 3, title: "(03) PROJECT 3", icon: folderIcon3 },
-  { id: 4, title: "(04) PROJECT 4", icon: folderIcon1 }, // Fallback to folderIcon1
+  { id: 2, title: "(02) MURROR", icon: folderIcon2 },
+  { id: 3, title: "(03) TIKTOK", icon: folderIcon3 },
+  { id: 4, title: "(01) THOOI", icon: folderIcon1 }, // Fallback to folderIcon1
 ];
 
 const thooiImages = [
@@ -35,9 +35,76 @@ const thooiImages = [
   "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812296/Tho17_ojbcdj.png", // Tho17
 ];
 
+const murrorImages = [
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780818846/1_iyrdob.png", // Murror1
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780818845/2_bv7ouu.png", // Murror2
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780818843/3_i7xbrn.png", // Murror3
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780818843/4_wdzhm5.png", // Murror4
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780818846/5_aebduz.png", // Murror5
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780818841/6_gr1txi.png", // Murror6
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780818858/7_b7id63.png", // Murror7
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780818845/8_fib9z9.png", // Murror8
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780818855/9_n39846.png", // Murror9
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780818842/10_ly2mow.png", // Murror10
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780818842/11_v2w2eg.png", // Murror11
+];
+
+const tiktokImages = [
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780821679/1_d4d4co.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780821428/2_s5v11g.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780820476/3_vbr7lq.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780820414/4_glvygv.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780820351/5_vmxsz0.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780822750/6_1_optimized_10000_jjhg4q.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780822750/7_optimized_10000_c43vhp.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780820224/8_apxbxi.png",
+];
+
+const thooi2Images = [
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_1_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_2_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_3_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_4_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_5_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_6_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_7_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_8_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_9_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_10_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_11_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_12_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_13_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_14_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_15_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_16_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_17_placeholder.png",
+];
+
 export default function FigmaPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedFolderId, setSelectedFolderId] = useState<number | null>(null);
+
+  // Sync selectedFolderId from URL query parameters on initial page load
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const folderParam = params.get("folder");
+    if (folderParam) {
+      setSelectedFolderId(parseInt(folderParam));
+    }
+  }, []);
+
+  // Listen to browser back/forward buttons (popstate events)
+  useEffect(() => {
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const folderParam = params.get("folder");
+      const folderId = folderParam ? parseInt(folderParam) : null;
+      setSelectedFolderId(folderId);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   useEffect(() => {
     if (selectedFolderId !== null) {
@@ -108,6 +175,8 @@ export default function FigmaPage() {
   const handleFolderClick = (id: number) => {
     const tl = gsap.timeline({
       onComplete: () => {
+        // Push folder ID to URL history stack
+        window.history.pushState({ folderId: id }, "", `/figma?folder=${id}`);
         setSelectedFolderId(id);
       },
     });
@@ -135,6 +204,8 @@ export default function FigmaPage() {
       duration: 0.4,
       ease: "power2.in",
       onComplete: () => {
+        // Push back to default figma route without query params
+        window.history.pushState(null, "", "/figma");
         setSelectedFolderId(null);
       },
     });
@@ -277,6 +348,186 @@ export default function FigmaPage() {
                         title="Done"
                       />
                     </div>
+                  )}
+                </div>
+              ))}
+
+              {/* Helper Back to Folders Button at the bottom */}
+              <div className="py-16 w-full flex justify-center bg-[#151515] border-t border-neutral-900">
+                <button
+                  onClick={handleBackToFolders}
+                  className="text-white hover:text-gray-300 transition-colors uppercase text-sm tracking-widest flex items-center gap-2 cursor-pointer border border-neutral-700 bg-neutral-800/40 hover:bg-neutral-800/80 px-8 py-3 rounded-full"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                  </svg>
+                  <span>Back to Folders</span>
+                </button>
+              </div>
+            </div>
+          ) : selectedFolderId === 2 ? (
+            <div className="w-full flex flex-col items-center">
+              {/* Back button overlay at the top-left of the first image */}
+              <div className="absolute top-8 left-8 md:left-12 z-50 pointer-events-auto">
+                <button
+                  onClick={handleBackToFolders}
+                  className="text-white hover:text-gray-300 transition-colors uppercase text-sm tracking-widest flex items-center gap-2 cursor-pointer border-none bg-transparent p-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                  </svg>
+                  <span>Back to Folders</span>
+                </button>
+              </div>
+
+              {/* Render all 17 images vertically */}
+              {murrorImages.map((img, index) => (
+                <div key={index} className="w-full relative bg-transparent">
+                  {img && (
+                    <img
+                      src={img}
+                      alt={`Murror Detail ${index + 1}`}
+                      className="w-full h-auto block"
+                      loading={index < 2 ? "eager" : "lazy"}
+                    />
+                  )}
+                </div>
+              ))}
+
+              {/* Helper Back to Folders Button at the bottom */}
+              <div className="py-16 w-full flex justify-center bg-[#151515] border-t border-neutral-900">
+                <button
+                  onClick={handleBackToFolders}
+                  className="text-white hover:text-gray-300 transition-colors uppercase text-sm tracking-widest flex items-center gap-2 cursor-pointer border border-neutral-700 bg-neutral-800/40 hover:bg-neutral-800/80 px-8 py-3 rounded-full"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                  </svg>
+                  <span>Back to Folders</span>
+                </button>
+              </div>
+            </div>
+          ) : selectedFolderId === 3 ? (
+            <div className="w-full flex flex-col items-center">
+              {/* Back button overlay at the top-left of the first image */}
+              <div className="absolute top-8 left-8 md:left-12 z-50 pointer-events-auto">
+                <button
+                  onClick={handleBackToFolders}
+                  className="text-white hover:text-gray-300 transition-colors uppercase text-sm tracking-widest flex items-center gap-2 cursor-pointer border-none bg-transparent p-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                  </svg>
+                  <span>Back to Folders</span>
+                </button>
+              </div>
+
+              {/* Render all 17 images vertically */}
+              {tiktokImages.map((img, index) => (
+                <div key={index} className="w-full relative bg-transparent">
+                  {img && (
+                    <img
+                      src={img}
+                      alt={`Tiktok Detail ${index + 1}`}
+                      className="w-full h-auto block"
+                      loading={index < 2 ? "eager" : "lazy"}
+                    />
+                  )}
+                </div>
+              ))}
+
+              {/* Helper Back to Folders Button at the bottom */}
+              <div className="py-16 w-full flex justify-center bg-[#151515] border-t border-neutral-900">
+                <button
+                  onClick={handleBackToFolders}
+                  className="text-white hover:text-gray-300 transition-colors uppercase text-sm tracking-widest flex items-center gap-2 cursor-pointer border border-neutral-700 bg-neutral-800/40 hover:bg-neutral-800/80 px-8 py-3 rounded-full"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                  </svg>
+                  <span>Back to Folders</span>
+                </button>
+              </div>
+            </div>
+          ) : selectedFolderId === 4 ? (
+            <div className="w-full flex flex-col items-center">
+              {/* Back button overlay at the top-left of the first image */}
+              <div className="absolute top-8 left-8 md:left-12 z-50 pointer-events-auto">
+                <button
+                  onClick={handleBackToFolders}
+                  className="text-white hover:text-gray-300 transition-colors uppercase text-sm tracking-widest flex items-center gap-2 cursor-pointer border-none bg-transparent p-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                  </svg>
+                  <span>Back to Folders</span>
+                </button>
+              </div>
+
+              {/* Render all 17 images vertically */}
+              {thooi2Images.map((img, index) => (
+                <div key={index} className="w-full relative bg-transparent">
+                  {img && (
+                    <img
+                      src={img}
+                      alt={`Tho2 Detail ${index + 1}`}
+                      className="w-full h-auto block"
+                      loading={index < 2 ? "eager" : "lazy"}
+                    />
                   )}
                 </div>
               ))}
