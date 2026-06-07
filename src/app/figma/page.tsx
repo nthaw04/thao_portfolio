@@ -213,10 +213,20 @@ export default function FigmaPage() {
 
   return (
     <main
-      className={`min-h-screen bg-[#151515] relative text-white ${selectedFolderId === null ? "overflow-hidden" : "overflow-y-auto"
+      className={`min-h-screen bg-[#151515] relative text-white figma-page-custom-cursor ${selectedFolderId === null ? "overflow-hidden" : "overflow-y-auto"
         }`}
       ref={containerRef}
     >
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            .figma-page-custom-cursor,
+            .figma-page-custom-cursor * {
+              cursor: url("/mouse.svg?v=3") 2 6, auto !important;
+            }
+          `,
+        }}
+      />
       {/* Background layer if needed */}
       <div
         className="fixed inset-0 z-0 mix-blend-multiply pointer-events-none opacity-20"
