@@ -21,10 +21,10 @@ export function FigmaProjectsSection() {
     <section
       id="figma"
       ref={sectionRef}
-      className="relative w-full h-auto flex flex-col md:flex-row bg-[#151515] overflow-hidden"
+      className="relative w-full h-auto md:h-screen flex flex-col md:flex-row bg-[#151515] overflow-hidden"
     >
       {/* Left Panel */}
-      <div className="w-full md:w-[35%] bg-[#121212] text-white p-12 md:p-16 flex flex-col justify-center relative z-10 min-h-[50vh] md:h-auto">
+      <div className="w-full md:w-[35%] bg-[#121212] text-white p-12 md:p-16 flex flex-col justify-center relative z-10 min-h-[50vh] md:h-full">
         <div className="flex-1 flex flex-col justify-center max-w-sm mx-auto w-full">
           <h2
             className="text-[#e23614] text-5xl md:text-[5rem] font-serif mb-10 tracking-tight"
@@ -76,7 +76,7 @@ export function FigmaProjectsSection() {
       </div>
 
       {/* Right Panel */}
-      <div className="w-full md:w-[65%] relative bg-[#fffff1] p-8 md:p-12 lg:py-16 lg:px-20 flex items-center justify-center min-h-[50vh]">
+      <div className="w-full md:w-[65%] relative bg-[#fffff1] py-4 px-2 md:px-4 lg:px-4 flex items-center justify-center min-h-[50vh] md:h-full">
         {/* Soft shadow overlay for the leafy effect */}
         <div
           className="absolute inset-0 z-0 mix-blend-multiply pointer-events-none"
@@ -87,104 +87,64 @@ export function FigmaProjectsSection() {
           }}
         />
 
-        {/* Grid Container matching the image */}
-        <div className="relative z-10 w-full max-w-4xl grid grid-cols-2 md:grid-cols-3 gap-0 text-black items-stretch">
-          {/* ROW 1 */}
-          <div className="col-span-1 md:col-start-1 md:row-start-1 flex">
-            <div className="w-full h-full min-h-[180px] lg:min-h-[200px] overflow-hidden relative">
-              <Image
-                src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80&w=800"
-                alt="Couple"
-                fill
-                unoptimized
-                className="object-cover"
-              />
-            </div>
+        {/* Asymmetric 5-Image Grid over Yellow Background */}
+        <div
+          className="relative z-10 w-full md:w-auto h-auto md:h-full md:max-h-[calc(100vh-40px)] max-w-full md:aspect-[1.25] flex flex-col md:grid md:grid-cols-12 gap-3 md:gap-4 text-black overflow-hidden bg-transparent p-0"
+          style={{ gridTemplateRows: "repeat(11, minmax(0, 1fr))" }}
+        >
+          {/* Image 1 (Top-Left, Vertical) */}
+          <div className="w-full aspect-[3/4] md:aspect-auto md:col-span-7 md:col-start-1 md:row-span-6 md:row-start-1 relative overflow-hidden group">
+            <Image
+              src="/images/figma/figma_grid_1.png"
+              alt="Creative Moodboard"
+              fill
+              unoptimized
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
           </div>
 
-          <div className="col-span-1 md:col-start-2 md:row-start-1 flex flex-col justify-center items-center text-center p-6">
-            <h3 className="text-sm md:text-lg font-bold uppercase tracking-widest text-[#1a1a1a] mb-1 leading-tight">
-              Commercial
-              <br />
-              Photography
-            </h3>
-            <p className="text-gray-500 text-xs md:text-sm font-light">
-              Short description here
-            </p>
+          {/* Image 2 (Top-Right, Horizontal) */}
+          <div className="w-full aspect-[4/3] md:aspect-auto md:col-span-5 md:col-start-8 md:row-span-3 md:row-start-1 relative overflow-hidden group">
+            <Image
+              src="/images/figma/figma_grid_2.png"
+              alt="Team Collaboration"
+              fill
+              unoptimized
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
           </div>
 
-          <div className="col-span-1 md:col-start-3 md:row-start-1 hidden md:flex">
-            <div className="w-full h-full min-h-[180px] lg:min-h-[200px] overflow-hidden relative">
-              <Image
-                src="https://images.unsplash.com/photo-1592247350064-5147be0a6845?auto=format&fit=crop&q=80&w=800"
-                alt="Vase"
-                fill
-                unoptimized
-                className="object-cover"
-              />
-            </div>
+          {/* Image 3 (Middle-Right, Horizontal) */}
+          <div className="w-full aspect-[4/3] md:aspect-auto md:col-span-5 md:col-start-8 md:row-span-4 md:row-start-4 relative overflow-hidden group">
+            <Image
+              src="/images/figma/figma_grid_3.png"
+              alt="Moodboard Work"
+              fill
+              unoptimized
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
           </div>
 
-          {/* ROW 2 */}
-          <div className="col-span-1 md:col-start-1 md:row-start-2 flex flex-col justify-center items-center md:items-start text-center md:text-left p-6">
-            <h3 className="text-sm md:text-lg font-bold uppercase tracking-widest text-[#1a1a1a] mb-1 leading-tight">
-              Portrait
-              <br />
-              Photography
-            </h3>
-            <p className="text-gray-500 text-xs md:text-sm font-light">
-              Short description here
-            </p>
+          {/* Image 4 (Bottom-Left, Vertical) */}
+          <div className="w-full aspect-[3/4] md:aspect-auto md:col-span-7 md:col-start-1 md:row-span-5 md:row-start-7 relative overflow-hidden group">
+            <Image
+              src="/images/figma/figma_grid_4.png"
+              alt="Creative Discussion"
+              fill
+              unoptimized
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
           </div>
 
-          <div className="col-span-2 md:col-span-1 md:col-start-2 md:row-start-2 flex">
-            <div className="w-full h-full min-h-[180px] lg:min-h-[200px] overflow-hidden relative">
-              <Image
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800"
-                alt="Mountains"
-                fill
-                unoptimized
-                className="object-cover"
-              />
-            </div>
-          </div>
-
-          {/* Mobile visible Vase (was ROW 1 col 3) */}
-          <div className="col-span-1 md:hidden flex flex-col justify-center items-center text-center p-6"></div>
-          <div className="col-span-1 md:hidden flex">
-            <div className="w-full h-full min-h-[180px] lg:min-h-[200px] overflow-hidden relative">
-              <Image
-                src="https://images.unsplash.com/photo-1592247350064-5147be0a6845?auto=format&fit=crop&q=80&w=800"
-                alt="Vase"
-                fill
-                unoptimized
-                className="object-cover"
-              />
-            </div>
-          </div>
-
-          {/* ROW 3 */}
-          <div className="col-span-1 md:col-start-2 md:row-start-3 flex flex-col justify-center items-center text-center p-6">
-            <h3 className="text-sm md:text-lg font-bold uppercase tracking-widest text-[#1a1a1a] mb-1 leading-tight">
-              Event
-              <br />
-              Photography
-            </h3>
-            <p className="text-gray-500 text-xs md:text-sm font-light">
-              Short description here
-            </p>
-          </div>
-
-          <div className="col-span-1 md:col-start-3 md:row-start-3 flex">
-            <div className="w-full h-full min-h-[180px] lg:min-h-[200px] overflow-hidden relative">
-              <Image
-                src="https://images.unsplash.com/photo-1627582522502-d922a901fd5a?auto=format&fit=crop&q=80&w=800"
-                alt="Rings"
-                fill
-                unoptimized
-                className="object-cover"
-              />
-            </div>
+          {/* Image 5 (Bottom-Right, Square) */}
+          <div className="w-full aspect-square md:aspect-auto md:col-span-5 md:col-start-8 md:row-span-4 md:row-start-8 relative overflow-hidden group">
+            <Image
+              src="/images/figma/figma_grid_5.png"
+              alt="Whiteboard Creativity"
+              fill
+              unoptimized
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
           </div>
         </div>
       </div>

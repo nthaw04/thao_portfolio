@@ -71,18 +71,120 @@ export function ExperienceSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
+      // Divider line animation (scale width from 0 to 1)
       gsap.fromTo(
-        ".exp-circle",
+        ".skills-divider",
+        { scaleX: 0, transformOrigin: "left center" },
+        {
+          scaleX: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".skills-divider",
+            start: "top 90%",
+          },
+        }
+      );
+
+      // Title animation (fade in and move up)
+      gsap.fromTo(
+        ".skills-title",
         { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.3,
-          stagger: 0.05,
-          ease: "power2.out",
+          duration: 1,
+          ease: "power3.out",
           scrollTrigger: {
-            trigger: sectionRef.current,
+            trigger: ".skills-title",
+            start: "top 90%",
+          },
+        }
+      );
+
+      // Rows and badges animation
+      const rows = gsap.utils.toArray<HTMLElement>(".skills-row");
+      rows.forEach((row) => {
+        const category = row.querySelector(".skills-category");
+        const badges = row.querySelectorAll(".skills-badge");
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: row,
             start: "top 95%",
+          },
+        });
+
+        if (category) {
+          tl.fromTo(
+            category,
+            { opacity: 0, x: -20 },
+            { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }
+          );
+        }
+
+        if (badges.length > 0) {
+          tl.fromTo(
+            badges,
+            { opacity: 0, scale: 0.8, y: 10 },
+            {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              duration: 0.5,
+              stagger: 0.05,
+              ease: "back.out(1.2)",
+            },
+            "-=0.4"
+          );
+        }
+      });
+
+      // Experience Title & Dividers
+      gsap.fromTo(
+        ".exp-divider",
+        { scaleX: 0, transformOrigin: "center center" },
+        {
+          scaleX: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: ".exp-title",
+            start: "top 90%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".exp-title",
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".exp-title",
+            start: "top 90%",
+          },
+        }
+      );
+
+      // Stagger circles when exp-title enters viewport
+      gsap.fromTo(
+        ".exp-circle",
+        { opacity: 0, y: 40, scale: 0.8 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "back.out(1.2)",
+          scrollTrigger: {
+            trigger: ".exp-title",
+            start: "top 75%",
           },
         },
       );
@@ -98,10 +200,10 @@ export function ExperienceSection() {
       <div className="mx-auto max-w-7xl">
         {/* SKILLS & TOOLS section */}
         <div className="mb-24 mt-10">
-          <div className="mb-16 h-px w-full bg-white/20"></div>
+          <div className="skills-divider mb-16 h-px w-full bg-white/20"></div>
 
           <h2
-            className="mb-12 flex flex-wrap justify-center text-center text-5xl leading-tight text-[#d6300c] sm:text-5xl md:text-6xl"
+            className="skills-title mb-12 flex flex-wrap justify-center text-center text-5xl leading-tight text-[#d6300c] sm:text-5xl md:text-6xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
             <span className="inline-block">
@@ -116,8 +218,8 @@ export function ExperienceSection() {
           </h2>
 
           <div className="mx-auto max-w-4xl space-y-8">
-            <div className="flex flex-col md:flex-row md:items-start gap-4">
-              <h3 className="w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
+            <div className="skills-row flex flex-col md:flex-row md:items-start gap-4">
+              <h3 className="skills-category w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
                 UX Skills:
               </h3>
               <div className="flex flex-wrap gap-3">
@@ -130,7 +232,7 @@ export function ExperienceSection() {
                 ].map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors px-4 py-2 text-sm font-light tracking-wide text-[#fffff1]"
+                    className="skills-badge rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors px-4 py-2 text-sm font-light tracking-wide text-[#fffff1]"
                   >
                     {skill}
                   </span>
@@ -138,8 +240,8 @@ export function ExperienceSection() {
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row md:items-start gap-4">
-              <h3 className="w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
+            <div className="skills-row flex flex-col md:flex-row md:items-start gap-4">
+              <h3 className="skills-category w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
                 UI Skills:
               </h3>
               <div className="flex flex-wrap gap-3">
@@ -151,7 +253,7 @@ export function ExperienceSection() {
                 ].map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors px-4 py-2 text-sm font-light tracking-wide text-[#fffff1]"
+                    className="skills-badge rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors px-4 py-2 text-sm font-light tracking-wide text-[#fffff1]"
                   >
                     {skill}
                   </span>
@@ -159,8 +261,8 @@ export function ExperienceSection() {
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row md:items-start gap-4">
-              <h3 className="w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
+            <div className="skills-row flex flex-col md:flex-row md:items-start gap-4">
+              <h3 className="skills-category w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
                 Frontend:
               </h3>
               <div className="flex flex-wrap gap-3">
@@ -174,7 +276,7 @@ export function ExperienceSection() {
                 ].map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors px-4 py-2 text-sm font-light tracking-wide text-[#fffff1]"
+                    className="skills-badge rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors px-4 py-2 text-sm font-light tracking-wide text-[#fffff1]"
                   >
                     {skill}
                   </span>
@@ -182,15 +284,15 @@ export function ExperienceSection() {
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row md:items-start gap-4">
-              <h3 className="w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
+            <div className="skills-row flex flex-col md:flex-row md:items-start gap-4">
+              <h3 className="skills-category w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
                 Tools:
               </h3>
               <div className="flex flex-wrap gap-3">
                 {["Figma", "VS Code", "Git/GitHub", "Jira"].map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors px-4 py-2 text-sm font-light tracking-wide text-[#fffff1]"
+                    className="skills-badge rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors px-4 py-2 text-sm font-light tracking-wide text-[#fffff1]"
                   >
                     {skill}
                   </span>
@@ -200,10 +302,10 @@ export function ExperienceSection() {
           </div>
         </div>
 
-        <div className="mb-16 h-px w-full bg-white/20"></div>
+        <div className="exp-divider mb-16 h-px w-full bg-white/20"></div>
 
         <h1
-          className="mb-10 flex flex-wrap justify-center text-center text-6xl leading-tight text-[#d6300c] sm:text-6xl md:mb-2 md:text-7xl lg:text-8xl"
+          className="exp-title mb-10 flex flex-wrap justify-center text-center text-6xl leading-tight text-[#d6300c] sm:text-6xl md:mb-2 md:text-7xl lg:text-8xl"
           style={{ fontFamily: "var(--font-display)" }}
         >
           <span className="inline-block">
@@ -435,7 +537,7 @@ export function ExperienceSection() {
               d="M 76.5 152.007812 C 76.5 101.328125 51.175781 76.003906 0.496094 76.003906 C 51.175781 76.003906 76.5 50.679688 76.5 0 C 76.5 50.679688 101.824219 76.003906 152.503906 76.003906 C 101.824219 76.003906 76.5 101.328125 76.5 152.007812 Z M 76.5 152.007812 "
             />
           </svg>
-          <div className="w-full h-px bg-white/50"></div>
+          <div className="exp-divider w-full h-px bg-white/50"></div>
         </div>
       </div>
     </section>

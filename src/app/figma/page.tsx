@@ -132,13 +132,21 @@ export default function FigmaPage() {
         rotation: 0,
       });
 
+      const isMobile = window.innerWidth < 768;
       // Points for 4 corners of a rectangle (Top-Left, Top-Right, Bottom-Left, Bottom-Right)
-      const basePositions = [
-        { x: -300, y: -100 },
-        { x: 300, y: -100 },
-        { x: -300, y: 180 },
-        { x: 300, y: 180 },
-      ];
+      const basePositions = isMobile
+        ? [
+            { x: -90, y: -130 },
+            { x: 90, y: -130 },
+            { x: -90, y: 130 },
+            { x: 90, y: 130 },
+          ]
+        : [
+            { x: -300, y: -100 },
+            { x: 300, y: -100 },
+            { x: -300, y: 180 },
+            { x: 300, y: 180 },
+          ];
 
       items.forEach((item, i) => {
         const base = basePositions[i % basePositions.length];
@@ -153,7 +161,7 @@ export default function FigmaPage() {
         gsap.to(item, {
           x: randomX,
           y: randomY,
-          scale: 1.2, // same size, scaled up a bit
+          scale: isMobile ? 0.95 : 1.2, // scale down a bit on mobile
           opacity: 1,
           rotation: rotation,
           duration: 1.5,
@@ -284,7 +292,7 @@ export default function FigmaPage() {
                 onClick={() => handleFolderClick(folder.id)}
                 className="folder-item absolute flex flex-col items-center justify-center cursor-pointer group pointer-events-auto"
               >
-                <div className="w-40 h-40 md:w-48 md:h-48 relative group-hover:-translate-y-2 transition-transform duration-300">
+                <div className="w-32 h-32 md:w-48 md:h-48 relative group-hover:-translate-y-2 transition-transform duration-300">
                   <Image
                     src={folder.icon}
                     alt={folder.title}
