@@ -8,25 +8,6 @@ import folderIcon1 from "../../assets/elements/folder.svg";
 import folderIcon2 from "../../assets/elements/folder_2.svg";
 import folderIcon3 from "../../assets/elements/folder_3.svg";
 
-// Import all 17 case study images
-import Tho1 from "../../assets/thooi/Tho1.png";
-import Tho2 from "../../assets/thooi/Tho2.png";
-import Tho3 from "../../assets/thooi/Tho3.png";
-import Tho4 from "../../assets/thooi/Tho4.png";
-import Tho5 from "../../assets/thooi/Tho5.png";
-import Tho6 from "../../assets/thooi/Tho6.png";
-import Tho7 from "../../assets/thooi/Tho7.png";
-import Tho8 from "../../assets/thooi/Tho8.png";
-import Tho9 from "../../assets/thooi/Tho9.png";
-import Tho10 from "../../assets/thooi/Tho10.png";
-import Tho11 from "../../assets/thooi/Tho11.png";
-import Tho12 from "../../assets/thooi/Tho12.png";
-import Tho13 from "../../assets/thooi/Tho13.png";
-import Tho14 from "../../assets/thooi/Tho14.png";
-import Tho15 from "../../assets/thooi/Tho15.png";
-import Tho16 from "../../assets/thooi/Tho16.png";
-import Tho17 from "../../assets/thooi/Tho17.png";
-
 const folders = [
   { id: 1, title: "(01) THOOI", icon: folderIcon1 },
   { id: 2, title: "(02) PROJECT 2", icon: folderIcon2 },
@@ -35,8 +16,23 @@ const folders = [
 ];
 
 const thooiImages = [
-  Tho1, Tho2, Tho3, Tho4, Tho5, Tho6, Tho7, Tho8, Tho9, Tho10,
-  Tho11, Tho12, Tho13, Tho14, Tho15, Tho16, Tho17
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho1_s5gbzw.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812258/Tho2_eqsx3s.png", // Tho2
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812255/Tho3_coiwx8.png", // Tho3
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812270/Tho4_xv3ask.png", // Tho4
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812244/Tho5_avr8bj.png", // Tho5
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812244/Tho6_la2hmc.png", // Tho6
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho7_z4wqzz.png", // Tho7
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812258/Tho8_mwpfve.png", // Tho8
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780813817/Tho9_kvxswe.png", // Tho9
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812251/Tho10_rvfqic.png", // Tho10
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho11_emfhna.png", // Tho11
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780813877/Tho12_lv7rri.png", // Tho12
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812284/Tho13_oqnkm7.png", // Tho13
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812280/Tho14_ccgdky.png", // Tho14
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812317/Tho15_zwz2b0.png", // Tho15
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812305/Tho16_gyv1jz.png", // Tho16
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812296/Tho17_ojbcdj.png", // Tho17
 ];
 
 export default function FigmaPage() {
@@ -124,12 +120,12 @@ export default function FigmaPage() {
       ease: "power2.inOut",
       stagger: 0.05,
     }, 0)
-    .to(".header-container", {
-      opacity: 0,
-      y: -20,
-      duration: 0.3,
-      ease: "power2.out",
-    }, 0);
+      .to(".header-container", {
+        opacity: 0,
+        y: -20,
+        duration: 0.3,
+        ease: "power2.out",
+      }, 0);
   };
 
   const handleBackToFolders = () => {
@@ -146,9 +142,8 @@ export default function FigmaPage() {
 
   return (
     <main
-      className={`min-h-screen bg-[#151515] relative text-white ${
-        selectedFolderId === null ? "overflow-hidden" : "overflow-y-auto"
-      }`}
+      className={`min-h-screen bg-[#151515] relative text-white ${selectedFolderId === null ? "overflow-hidden" : "overflow-y-auto"
+        }`}
       ref={containerRef}
     >
       {/* Background layer if needed */}
@@ -248,18 +243,20 @@ export default function FigmaPage() {
 
               {/* Render all 17 images vertically */}
               {thooiImages.map((img, index) => (
-                <div key={index} className="w-full relative bg-[#151515]">
-                  <Image
-                    src={img}
-                    alt={`Tho Detail ${index + 1}`}
-                    className="w-full h-auto object-contain"
-                    priority={index < 2} // Eager load the first 2 images
-                  />
+                <div key={index} className="w-full relative bg-transparent">
+                  {img && (
+                    <img
+                      src={img}
+                      alt={`Tho Detail ${index + 1}`}
+                      className="w-full h-auto block"
+                      loading={index < 2 ? "eager" : "lazy"}
+                    />
+                  )}
                   {/* Embed Vimeo video right after Tho7 (index 6, between Tho7 and Tho8) */}
                   {index === 6 && (
-                    <div className="w-full relative aspect-video bg-[#151515]">
+                    <div className="w-full relative aspect-video bg-white">
                       <iframe
-                        src="https://player.vimeo.com/video/1196414490?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1"
+                        src="https://player.vimeo.com/video/1196414490?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0"
                         className="absolute inset-0 w-full h-full"
                         frameBorder="0"
                         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
@@ -270,9 +267,9 @@ export default function FigmaPage() {
                   )}
                   {/* Embed Vimeo video right after Tho10 (index 9, between Tho10 and Tho11) */}
                   {index === 9 && (
-                    <div className="w-full relative aspect-video bg-[#151515]">
+                    <div className="w-full relative aspect-video bg-white">
                       <iframe
-                        src="https://player.vimeo.com/video/1196920557?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1"
+                        src="https://player.vimeo.com/video/1196920557?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0"
                         className="absolute inset-0 w-full h-full"
                         frameBorder="0"
                         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
