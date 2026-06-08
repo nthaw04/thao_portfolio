@@ -105,7 +105,7 @@ export function HeroSection() {
               <li>
                 <a
                   className="transition-opacity hover:opacity-70"
-                  href="https://drive.google.com/file/d/16clsoRooBAj8SQXjnMtLurCuIhwbEcZk/view?usp=sharing"
+                  href="https://drive.google.com/file/d/18OtSiEkGesQHeaKsX53Gj7DHpbssjYu5/view?usp=drive_link"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -115,7 +115,7 @@ export function HeroSection() {
               <li>
                 <a
                   className="transition-opacity hover:opacity-70"
-                  href="https://drive.google.com/file/d/1YR96PiGpz5J39jOCeUTs8UXNl-YXrpaz/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1wX0hdv3hpAZadba6x3UuJcnKe3u-3o9S/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -149,8 +149,8 @@ export function HeroSection() {
             {/* Mobile Menu Dropdown */}
             <div
               className={`absolute left-0 top-full z-10 flex w-full flex-col gap-6 bg-[#f8f8f8]/95 py-8 text-center shadow-sm backdrop-blur-md transition-all duration-300 md:hidden ${isMobileMenuOpen
-                  ? "visible mt-2 translate-y-0 opacity-100"
-                  : "invisible mt-2 -translate-y-4 opacity-0"
+                ? "visible mt-2 translate-y-0 opacity-100"
+                : "invisible mt-2 -translate-y-4 opacity-0"
                 }`}
             >
               <a
