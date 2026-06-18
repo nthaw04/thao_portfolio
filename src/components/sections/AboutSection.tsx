@@ -169,7 +169,7 @@ export function AboutSection() {
                   FPT University
                 </p>
                 <p className="text-lg font-light tracking-wide text-[#fffff1]">
-                  2022
+                  Nov 2022 - Now
                 </p>
               </div>
             </div>

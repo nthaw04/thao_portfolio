@@ -4,7 +4,13 @@
     "title": "Portfolio Redesign",
     "category": "HappPaws",
     "description": "Happy Paws is a comprehensive, all-in-one web platform dedicated to premium pet care. Designed with convenience in mind, it allows pet owners to seamlessly book cozy Hotel stays, schedule relaxing Spa grooming sessions, and shop for high-quality pet supplies—all in one place.",
-    "tags": ["Next.js", "Tailwind CSS", "Tanstack Query", "Three.js", "Socket.io"],
+    "tags": [
+      "Next.js",
+      "Tailwind CSS",
+      "Tanstack Query",
+      "Three.js",
+      "Socket.io"
+    ],
     "preview": "Thiết kế lại portfolio với trải nghiệm chú trọng nội dung.",
     "heroImage": "/images/projects/happypaws.png",
     "githubUrl": "https://github.com/F5-Teams/project-frontend-web",
@@ -15,7 +21,12 @@
     "title": "Startup Launch Platform",
     "category": "MEMORA",
     "description": "Memora is a platform where you can create a virtual memory exhibition — a 2D space where each user can decorate and arrange their memories by pictures, text.",
-    "tags": ["Next.js", "React Native", "Expo", "Figma"],
+    "tags": [
+      "Next.js",
+      "React Native",
+      "Expo",
+      "Figma"
+    ],
     "preview": "Landing page giới thiệu sản phẩm với các case study thực tế.",
     "heroImage": "/images/projects/MEMORA.png",
     "githubUrl": "https://github.com/MEMORA-SAFE-UR-MEMORY/Memora-LandingPage",
@@ -27,27 +38,45 @@
     "title": "ResQ Flood Relief System",
     "category": "RESQ",
     "description": "RESQ is an Intelligent System for SOS Triage and Disaster Resource Allocation.",
-    "tags": ["AI", "Mesh Network", "UWB", "Vite", "Next.js", "Zustand", "Swift", "Bridgefy-SDK"],
+    "tags": [
+      "AI",
+      "Mesh Network",
+      "UWB",
+      "Vite",
+      "Next.js",
+      "Zustand",
+      "Swift",
+      "Bridgefy-SDK"
+    ],
     "preview": "A comprehensive solution for flood relief efforts with real-time mapping and resource tracking.",
     "heroImage": "/images/projects/ResQ.jpg",
     "githubUrl": "https://github.com/ReQ-SOS-Mien-Trung/resq-sos-mientrung-landingpage",
     "githubUrlClient": "https://github.com/ReQ-SOS-Mien-Trung/resq-sos-web-client",
     "githubUrlMobile": "https://github.com/ReQ-SOS-Mien-Trung/resq-sos-mientrung-ios",
-    "liveUrl": "https://resq-sos-mientrung.vercel.app/",
-    "liveUrlClient": "https://resq-sos.vercel.app/sign-in"
+    "liveUrl": "https://resq-sos-mientrung-eight.vercel.app/",
+    "liveUrlClient": "https://resq-sos-beige.vercel.app/"
   },
   {
     "slug": "resq-flood-relief-system",
     "title": "ResQ Flood Relief System",
     "category": "RESQ",
     "description": "RESQ is an Intelligent System for SOS Triage and Disaster Resource Allocation.",
-    "tags": ["AI", "Mesh Network", "UWB", "Vite", "Next.js", "Zustand", "Swift", "Bridgefy-SDK"],
+    "tags": [
+      "AI",
+      "Mesh Network",
+      "UWB",
+      "Vite",
+      "Next.js",
+      "Zustand",
+      "Swift",
+      "Bridgefy-SDK"
+    ],
     "preview": "A comprehensive solution for flood relief efforts with real-time mapping and resource tracking.",
     "heroImage": "/images/projects/ResQ.jpg",
     "githubUrl": "https://github.com/ReQ-SOS-Mien-Trung/resq-sos-mientrung-landingpage",
     "githubUrlClient": "https://github.com/ReQ-SOS-Mien-Trung/resq-sos-web-client",
     "githubUrlMobile": "https://github.com/ReQ-SOS-Mien-Trung/resq-sos-mientrung-ios",
-    "liveUrl": "https://resq-sos-mientrung.vercel.app/",
-    "liveUrlClient": "https://resq-sos.vercel.app/sign-in"
+    "liveUrl": "https://resq-sos-mientrung-eight.vercel.app/",
+    "liveUrlClient": "https://resq-sos-beige.vercel.app/"
   }
 ]

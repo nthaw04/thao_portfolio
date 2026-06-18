@@ -2,10 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { Project } from "../../types/project";
-import Link from "next/link";
 import Image from "next/image";
 import { ClientIcon as Icon } from "../shared/ClientIcon";
-import { routes } from "../../constants/routes";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -83,7 +81,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
             height: 480px;
             transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
             position: relative;
-            cursor: pointer;
+            cursor: default;
             z-index: 1;
             min-width: 0;
           }
@@ -225,26 +223,17 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                     )}
                   </div>
 
-                  {/* Main Link to Project Detail covering the card underneath icons */}
-                  <Link
-                    href={routes.projectDetail(project.slug)}
-                    className="absolute inset-0 z-20"
-                    aria-label={`View ${project.title}`}
-                  />
+                  {/* Removed main detail Link so clicking the card does not navigate */}
                 </div>
 
-                <Link
-                  href={routes.projectDetail(project.slug)}
-                  className="flex justify-between items-start text-zinc-600 group-hover:text-black transition-colors mt-4"
+                <div
+                  className="flex justify-between items-start text-zinc-600 transition-colors mt-4"
                   style={{ fontFamily: "var(--font-season-sans)" }}
                 >
                   <span className="text-sm md:text-base pr-4 leading-snug max-w-full">
                     {project.category}
                   </span>
-                  <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-medium mt-0.5">
-                    View Project
-                  </span>
-                </Link>
+                </div>
               </div>
             ))}
           </div>

@@ -105,21 +105,11 @@ export function HeroSection() {
               <li>
                 <a
                   className="transition-opacity hover:opacity-70"
-                  href="https://drive.google.com/file/d/18OtSiEkGesQHeaKsX53Gj7DHpbssjYu5/view?usp=drive_link"
+                  href="https://drive.google.com/file/d/1Xb9oO2wBsbZXyjb5ReU6GVFR85TCntoh/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Resume
-                </a>
-              </li>
-              <li>
-                <a
-                  className="transition-opacity hover:opacity-70"
-                  href="https://drive.google.com/file/d/1wX0hdv3hpAZadba6x3UuJcnKe3u-3o9S/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  CV
                 </a>
               </li>
               <li>
