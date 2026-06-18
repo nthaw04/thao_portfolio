@@ -4,6 +4,7 @@
     "title": "Portfolio Redesign",
     "category": "HappPaws",
     "description": "Happy Paws is a comprehensive, all-in-one web platform dedicated to premium pet care. Designed with convenience in mind, it allows pet owners to seamlessly book cozy Hotel stays, schedule relaxing Spa grooming sessions, and shop for high-quality pet supplies—all in one place.",
+    "descriptionVi": "Happy Paws là một nền tảng web toàn diện dành riêng cho dịch vụ chăm sóc thú cưng cao cấp. Được thiết kế với sự tiện lợi, nền tảng cho phép chủ thú cưng dễ dàng đặt phòng Khách sạn, lên lịch Spa thư giãn và mua sắm đồ dùng chất lượng cao—tất cả ở cùng một nơi.",
     "tags": [
       "Next.js",
       "Tailwind CSS",
@@ -21,6 +22,7 @@
     "title": "Startup Launch Platform",
     "category": "MEMORA",
     "description": "Memora is a platform where you can create a virtual memory exhibition — a 2D space where each user can decorate and arrange their memories by pictures, text.",
+    "descriptionVi": "Memora là nền tảng nơi bạn có thể tạo triển lãm kỷ niệm ảo — không gian 2D để mỗi người dùng trang trí và sắp xếp những kỷ niệm của mình bằng hình ảnh và văn bản.",
     "tags": [
       "Next.js",
       "React Native",
@@ -38,6 +40,7 @@
     "title": "ResQ Flood Relief System",
     "category": "RESQ",
     "description": "RESQ is an Intelligent System for SOS Triage and Disaster Resource Allocation.",
+    "descriptionVi": "RESQ là Hệ thống Thông minh dùng để Phân loại Cứu nạn SOS và Phân bổ Nguồn lực Thảm họa.",
     "tags": [
       "AI",
       "Mesh Network",
@@ -61,6 +64,7 @@
     "title": "ResQ Flood Relief System",
     "category": "RESQ",
     "description": "RESQ is an Intelligent System for SOS Triage and Disaster Resource Allocation.",
+    "descriptionVi": "RESQ là Hệ thống Thông minh dùng để Phân loại Cứu nạn SOS và Phân bổ Nguồn lực Thảm họa.",
     "tags": [
       "AI",
       "Mesh Network",

@@ -5,9 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "../../context/LanguageContext";
 
 export function FigmaProjectsSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { language } = useLanguage();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -30,10 +32,10 @@ export function FigmaProjectsSection() {
             className="text-[#e23614] text-5xl md:text-[5rem] font-serif mb-10 tracking-tight"
             style={{ fontFamily: '"Noto Serif Display", serif' }}
           >
-            <span className="italic">projects</span>
+            <span className="italic">{language === "vi" ? "dự án" : "projects"}</span>
             <br />
             <span className="not-italic">
-              on
+              {language === "vi" ? "trên" : "on"}
               <br />
               Figma.
             </span>
@@ -46,8 +48,9 @@ export function FigmaProjectsSection() {
               color: "#d1d1d1",
             }}
           >
-            A showcase of my personal and team projects—built throughout my
-            continuous journey of learning and mastering UX/UI.
+            {language === "vi" 
+              ? "Tuyển tập các dự án cá nhân và làm việc nhóm của tôi—được xây dựng trong suốt quá trình học hỏi và hoàn thiện kỹ năng UX/UI." 
+              : "A showcase of my personal and team projects—built throughout my continuous journey of learning and mastering UX/UI."}
           </p>
 
           <Link
@@ -55,7 +58,7 @@ export function FigmaProjectsSection() {
             className="flex items-center gap-6 group cursor-pointer hover:opacity-80 transition-opacity w-max mt-auto"
           >
             <span className="text-sm font-light tracking-wide uppercase">
-              See more
+              {language === "vi" ? "Xem tất cả" : "See more"}
             </span>
             <div className="w-12 h-12 rounded-full border border-white flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors duration-300">
               <svg

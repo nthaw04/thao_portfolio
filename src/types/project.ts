@@ -3,6 +3,7 @@ export interface Project {
   title: string;
   category: string;
   description: string;
+  descriptionVi?: string;
   preview: string;
   tags: string[];
   heroImage: string;

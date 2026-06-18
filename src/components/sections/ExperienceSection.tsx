@@ -3,70 +3,73 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-const experiences = [
-  {
-    num: "01",
-    title: "UI/UX Designer & Frontend Developer",
-    desc: "01/2025 - 04/2025",
-    location: "FPT Software Academy | Ho Chi Minh City, Vietnam",
-    project: "Claim Request System | Team Size: 5",
-    details: [
-      <span key="1">
-        <strong className="text-white font-semibold">User Problem:</strong>{" "}
-        Inefficient, paper-heavy claim submission and approval processes causing
-        administrative delays and fragmented workflows within the organization.
-      </span>,
-      <span key="2">
-        <strong className="text-white font-semibold">Solution:</strong>{" "}
-        Formulated clear multi-role approval paths via wireframes and developed
-        a centralized web application using ReactJS and TypeScript.
-      </span>,
-      <span key="3">
-        <strong className="text-white font-semibold">Result:</strong> Eliminated
-        fragmented paperwork, ensured strict type safety with reusable
-        components, and significantly reduced overall approval turnaround time.
-      </span>,
-    ],
-  },
-  {
-    num: "02",
-    title: "UI/UX Designer",
-    desc: "06/2025 - 01/2026",
-    location: "MindX Technology School | Ho Chi Minh City, Vietnam",
-    project: "Murror AI Companion App Revamp | UI/UX Case Study | Team Size: 5",
-    details: [
-      <span key="1">
-        <strong className="text-white font-semibold">
-          Target User & Pain Point:
-        </strong>{" "}
-        Gen Z and Millennials (ages 18-32) experiencing sudden stress or panic
-        attacks need immediate mental health support, but manually opening and
-        navigating an app during an emotional crisis causes cognitive overload.
-      </span>,
-      <span key="2">
-        <strong className="text-white font-semibold">
-          Design Decisions & Solution:
-        </strong>{" "}
-        Architected a watchOS &quot;Crisis Support&quot; ecosystem leveraging
-        Apple HealthKit (Heart Rate & HRV) for passive anomaly detection. Mapped
-        a frictionless 4-step intervention flow (Detect - Analyze - Gentle Alert
-        - Guide), utilizing high-contrast UI and haptic vibrations to ensure
-        extreme usability without requiring visual focus.
-      </span>,
-      <span key="3">
-        <strong className="text-white font-semibold">Final Impact:</strong>{" "}
-        Delivered an end-to-end, empathetic emergency journey that successfully
-        minimized user cognitive load, transforming complex biometric data into
-        safe, automated psychological interventions.
-      </span>,
-    ],
-  },
-];
+import { useLanguage } from "../../context/LanguageContext";
 
 export function ExperienceSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  const { language } = useLanguage();
+
+  const experiences = [
+    {
+      num: "01",
+      title: language === "vi" ? "UI/UX Designer & Lập trình viên Frontend" : "UI/UX Designer & Frontend Developer",
+      desc: "01/2025 - 04/2025",
+      location: "FPT Software Academy | Ho Chi Minh City, Vietnam",
+      project: language === "vi" ? "Hệ thống Yêu cầu Bồi thường | Nhóm: 5 người" : "Claim Request System | Team Size: 5",
+      details: [
+        <span key="1">
+          <strong className="text-white font-semibold">{language === "vi" ? "Vấn đề:" : "User Problem:"}</strong>{" "}
+          {language === "vi" 
+            ? "Quy trình nộp và phê duyệt nặng nề, nhiều giấy tờ gây chậm trễ và đứt gãy quy trình." 
+            : "Inefficient, paper-heavy claim submission and approval processes causing administrative delays and fragmented workflows within the organization."}
+        </span>,
+        <span key="2">
+          <strong className="text-white font-semibold">{language === "vi" ? "Giải pháp:" : "Solution:"}</strong>{" "}
+          {language === "vi" 
+            ? "Xây dựng luồng phê duyệt rõ ràng qua wireframe và phát triển ứng dụng web tập trung bằng ReactJS và TypeScript." 
+            : "Formulated clear multi-role approval paths via wireframes and developed a centralized web application using ReactJS and TypeScript."}
+        </span>,
+        <span key="3">
+          <strong className="text-white font-semibold">{language === "vi" ? "Kết quả:" : "Result:"}</strong>{" "}
+          {language === "vi" 
+            ? "Loại bỏ giấy tờ phân tán, đảm bảo an toàn kiểu dữ liệu với các component tái sử dụng và giảm đáng kể thời gian phê duyệt." 
+            : "Eliminated fragmented paperwork, ensured strict type safety with reusable components, and significantly reduced overall approval turnaround time."}
+        </span>,
+      ],
+    },
+    {
+      num: "02",
+      title: "UI/UX Designer",
+      desc: "06/2025 - 01/2026",
+      location: "MindX Technology School | Ho Chi Minh City, Vietnam",
+      project: language === "vi" ? "Ứng dụng Trợ lý AI Murror | UI/UX Case Study | Nhóm: 5 người" : "Murror AI Companion App Revamp | UI/UX Case Study | Team Size: 5",
+      details: [
+        <span key="1">
+          <strong className="text-white font-semibold">
+            {language === "vi" ? "Người dùng mục tiêu & Vấn đề:" : "Target User & Pain Point:"}
+          </strong>{" "}
+          {language === "vi" 
+            ? "Gen Z và Millennials (18-32 tuổi) gặp căng thẳng đột ngột hoặc hoảng loạn cần hỗ trợ tâm lý ngay lập tức, nhưng việc phải tự mở ứng dụng trong cơn khủng hoảng gây quá tải nhận thức." 
+            : "Gen Z and Millennials (ages 18-32) experiencing sudden stress or panic attacks need immediate mental health support, but manually opening and navigating an app during an emotional crisis causes cognitive overload."}
+        </span>,
+        <span key="2">
+          <strong className="text-white font-semibold">
+            {language === "vi" ? "Quyết định Thiết kế & Giải pháp:" : "Design Decisions & Solution:"}
+          </strong>{" "}
+          {language === "vi" 
+            ? "Kiến trúc hệ sinh thái 'Hỗ trợ Khủng hoảng' trên watchOS tận dụng Apple HealthKit để phát hiện bất thường tự động. Xây dựng luồng can thiệp 4 bước (Phát hiện - Phân tích - Cảnh báo - Hướng dẫn) với giao diện tương phản cao và rung phản hồi để sử dụng dễ dàng mà không cần tập trung nhìn." 
+            : "Architected a watchOS \"Crisis Support\" ecosystem leveraging Apple HealthKit (Heart Rate & HRV) for passive anomaly detection. Mapped a frictionless 4-step intervention flow (Detect - Analyze - Gentle Alert - Guide), utilizing high-contrast UI and haptic vibrations to ensure extreme usability without requiring visual focus."}
+        </span>,
+        <span key="3">
+          <strong className="text-white font-semibold">{language === "vi" ? "Tác động cuối cùng:" : "Final Impact:"}</strong>{" "}
+          {language === "vi" 
+            ? "Mang đến hành trình cấp cứu trọn vẹn, thấu cảm, giảm thiểu thành công tải nhận thức và chuyển hóa dữ liệu sinh trắc phức tạp thành can thiệp tâm lý an toàn, tự động." 
+            : "Delivered an end-to-end, empathetic emergency journey that successfully minimized user cognitive load, transforming complex biometric data into safe, automated psychological interventions."}
+        </span>,
+      ],
+    },
+  ];
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -211,16 +214,16 @@ export function ExperienceSection() {
                 className="italic font-light"
                 style={{ fontFamily: '"Noto Serif Display", serif' }}
               >
-                S
+                {language === "vi" ? "K" : "S"}
               </span>
-              kills &amp; Tools
+              {language === "vi" ? "ỹ năng & Công cụ" : "kills & Tools"}
             </span>
           </h2>
 
           <div className="mx-auto max-w-4xl space-y-8">
             <div className="skills-row flex flex-col md:flex-row md:items-start gap-4">
               <h3 className="skills-category w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
-                UX Skills:
+                {language === "vi" ? "Kỹ năng UX:" : "UX Skills:"}
               </h3>
               <div className="flex flex-wrap gap-3">
                 {[
@@ -242,7 +245,7 @@ export function ExperienceSection() {
 
             <div className="skills-row flex flex-col md:flex-row md:items-start gap-4">
               <h3 className="skills-category w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
-                UI Skills:
+                {language === "vi" ? "Kỹ năng UI:" : "UI Skills:"}
               </h3>
               <div className="flex flex-wrap gap-3">
                 {[
@@ -263,7 +266,7 @@ export function ExperienceSection() {
 
             <div className="skills-row flex flex-col md:flex-row md:items-start gap-4">
               <h3 className="skills-category w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
-                Frontend:
+                {language === "vi" ? "Lập trình Web:" : "Frontend:"}
               </h3>
               <div className="flex flex-wrap gap-3">
                 {[
@@ -286,7 +289,7 @@ export function ExperienceSection() {
 
             <div className="skills-row flex flex-col md:flex-row md:items-start gap-4">
               <h3 className="skills-category w-36 shrink-0 text-xl font-semibold tracking-wide text-[#fffff1] md:pt-2">
-                Tools:
+                {language === "vi" ? "Công cụ:" : "Tools:"}
               </h3>
               <div className="flex flex-wrap gap-3">
                 {["Figma", "VS Code", "Git/GitHub", "Jira"].map((skill) => (
@@ -313,9 +316,9 @@ export function ExperienceSection() {
               className="italic font-light"
               style={{ fontFamily: '"Noto Serif Display", serif' }}
             >
-              M
+              {language === "vi" ? "K" : "M"}
             </span>
-            y
+            {language === "vi" ? "inh" : "y"}
           </span>
           <span className="inline-block w-4" aria-hidden="true" />
           <span className="inline-block">
@@ -323,9 +326,9 @@ export function ExperienceSection() {
               className="italic font-light"
               style={{ fontFamily: '"Noto Serif Display", serif' }}
             >
-              E
+              {language === "vi" ? "N" : "E"}
             </span>
-            xperience
+            {language === "vi" ? "ghiệm" : "xperience"}
           </span>
         </h1>
 

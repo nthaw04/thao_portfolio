@@ -6,9 +6,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import aboutPhotoPlaceholder from "../../assets/about/about-photo-placeholder.jpeg";
 import diamondSparkle from "../../assets/elements/diamond-sparkle.svg";
+import { useLanguage } from "../../context/LanguageContext";
 
 export function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -107,9 +109,9 @@ export function AboutSection() {
                   className="italic font-light"
                   style={{ fontFamily: '"Noto Serif Display", serif' }}
                 >
-                  A
+                  {t("about.about")}
                 </span>
-                bout
+                {t("about.bout")}
               </span>
               <span className="inline-block w-4" aria-hidden="true" />
               <span className="inline-block">
@@ -117,9 +119,9 @@ export function AboutSection() {
                   className="italic font-light"
                   style={{ fontFamily: '"Noto Serif Display", serif' }}
                 >
-                  M
+                  {t("about.me")}
                 </span>
-                e
+                {t("about.e")}
               </span>
             </h1>
 
@@ -127,17 +129,11 @@ export function AboutSection() {
               className="about-fade-in text-lg font-light uppercase text-[#fffff1] tracking-wider"
               style={{ fontFamily: "var(--font-season-sans)" }}
             >
-              UX/UI Designer
+              {t("about.title")}
             </h2>
           </div>
           <p className="about-fade-in max-w-2xl text-lg leading-7 text-[#fffff1]">
-            With a dual background in Software Engineering and UX/UI Design, I
-            combine my design strengths with a deep understanding of frontend
-            constraints and implementation. This allows me to deliver
-            user-centered, technically feasible interfaces. I meticulously
-            validate requirements and collaborate effectively with developers,
-            ensuring a seamless, optimized workflow from prototype to
-            production.
+            {t("about.description")}
           </p>
 
           <div className="trigger-2">
@@ -151,9 +147,9 @@ export function AboutSection() {
                     className="italic font-light"
                     style={{ fontFamily: '"Noto Serif Display", serif' }}
                   >
-                    E
+                    {t("about.education_e")}
                   </span>
-                  ducation
+                  {t("about.ducation")}
                 </span>
               </h1>
             </div>
@@ -162,14 +158,14 @@ export function AboutSection() {
                 className="text-lg font-light text-[#fffff1]"
                 style={{ fontFamily: "var(--font-season-sans)" }}
               >
-                Bachelor of Software Engineering
+                {t("about.degree")}
               </h3>
               <div className="mt-4 flex flex-col border-l-[3px] border-[#fffff1] pl-6">
                 <p className="text-lg font-light tracking-wide text-[#fffff1]">
-                  FPT University
+                  {t("about.university")}
                 </p>
                 <p className="text-lg font-light tracking-wide text-[#fffff1]">
-                  Nov 2022 - Now
+                  {t("about.time")}
                 </p>
               </div>
             </div>

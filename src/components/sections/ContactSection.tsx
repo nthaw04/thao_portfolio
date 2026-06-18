@@ -4,9 +4,11 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "../../context/LanguageContext";
 
 export function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { language } = useLanguage();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -65,15 +67,15 @@ export function ContactSection() {
                 lineHeight: "1",
               }}
             >
-              <span className="italic font-light">C</span>
-              <span className="tracking-tight lowercase">ontact</span>
+              <span className="italic font-light">{language === "vi" ? "L" : "C"}</span>
+              <span className="tracking-tight lowercase">{language === "vi" ? "iên hệ" : "ontact"}</span>
             </h2>
 
             <p
               className="contact-item text-white/80 mb-10 md:mb-16 text-lg"
               style={{ fontFamily: "var(--font-season-sans)" }}
             >
-              Thank you for viewing this portfolio!
+              {language === "vi" ? "Cảm ơn bạn đã xem portfolio này!" : "Thank you for viewing this portfolio!"}
             </p>
 
             <div

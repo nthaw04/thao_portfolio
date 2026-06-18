@@ -3,9 +3,11 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "../../context/LanguageContext";
 
 export function ProjectsCoverSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { language } = useLanguage();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -51,14 +53,14 @@ export function ProjectsCoverSection() {
             className="cover-text text-4xl md:text-8xl text-white tracking-normal lowercase inline-block"
             style={{ fontFamily: '"Noto Serif Display", serif' }}
           >
-            my
+            {language === "vi" ? "các" : "my"}
           </span>
         </div>
         <h2
           className="cover-text text-[6rem] md:text-[14rem] text-white tracking-tighter lowercase italic"
           style={{ fontFamily: '"Noto Serif Display", serif', lineHeight: "1" }}
         >
-          projects
+          {language === "vi" ? "dự án" : "projects"}
         </h2>
       </div>
     </section>

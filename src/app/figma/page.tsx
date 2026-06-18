@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
+import { useLanguage } from "../../context/LanguageContext";
 import folderIcon1 from "../../assets/elements/folder.svg";
 import folderIcon2 from "../../assets/elements/folder_2.svg";
 import folderIcon3 from "../../assets/elements/folder_3.svg";
@@ -83,13 +84,16 @@ const thooi2Images = [
 export default function FigmaPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedFolderId, setSelectedFolderId] = useState<number | null>(null);
+  const { language } = useLanguage();
 
   // Sync selectedFolderId from URL query parameters on initial page load
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const folderParam = params.get("folder");
     if (folderParam) {
-      setSelectedFolderId(parseInt(folderParam));
+      setTimeout(() => {
+        setSelectedFolderId(parseInt(folderParam));
+      }, 0);
     }
   }, []);
 
@@ -265,7 +269,7 @@ export default function FigmaPage() {
                 >
                   <path d="M19 12H5M12 19l-7-7 7-7" />
                 </svg>
-                <span>Back to Home</span>
+                <span>{language === "vi" ? "Trở về trang chủ" : "Back to Home"}</span>
               </Link>
             </div>
 
@@ -274,10 +278,10 @@ export default function FigmaPage() {
                 className="text-4xl md:text-5xl font-serif text-[#e23614] leading-none"
                 style={{ fontFamily: '"Noto Serif Display", serif' }}
               >
-                <span className="italic">projects</span> on Figma.
+                <span className="italic">{language === "vi" ? "dự án" : "projects"}</span> {language === "vi" ? "trên" : "on"} Figma.
               </h1>
               <p className="text-gray-400 font-light text-xs md:text-sm tracking-wider uppercase mt-2">
-                Select a folder to view details
+                {language === "vi" ? "Chọn một thư mục để xem chi tiết" : "Select a folder to view details"}
               </p>
             </div>
 
@@ -325,8 +329,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                  <span>Back to Folders</span>
+                </svg>
+                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
 
@@ -387,8 +391,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                  <span>Back to Folders</span>
+                </svg>
+                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
             </div>
@@ -411,8 +415,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                  <span>Back to Folders</span>
+                </svg>
+                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
 
@@ -447,8 +451,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                  <span>Back to Folders</span>
+                </svg>
+                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
             </div>
@@ -471,8 +475,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                  <span>Back to Folders</span>
+                </svg>
+                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
 
@@ -507,8 +511,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                  <span>Back to Folders</span>
+                </svg>
+                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
             </div>
@@ -531,8 +535,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                  <span>Back to Folders</span>
+                </svg>
+                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
 
@@ -567,8 +571,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                  <span>Back to Folders</span>
+                </svg>
+                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
             </div>
@@ -590,15 +594,17 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                  <span>Back to Folders</span>
+                </svg>
+                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
 
               <div className="w-full text-center py-20 flex flex-col items-center gap-6">
-                <h2 className="text-3xl font-serif text-white">Project Details Coming Soon</h2>
+                <h2 className="text-3xl font-serif text-white">
+                  {language === "vi" ? "Chi tiết dự án sắp ra mắt" : "Project Details Coming Soon"}
+                </h2>
                 <p className="text-neutral-400 font-light max-w-md">
-                  We are currently preparing the case study and design assets for this folder. Check back soon!
+                  {language === "vi" ? "Chúng tôi đang chuẩn bị case study và tài sản thiết kế cho thư mục này. Hãy quay lại sau nhé!" : "We are currently preparing the case study and design assets for this folder. Check back soon!"}
                 </p>
               </div>
             </div>

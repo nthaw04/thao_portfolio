@@ -6,9 +6,11 @@ import Image from "next/image";
 import { ClientIcon as Icon } from "../shared/ClientIcon";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "../../context/LanguageContext";
 
 export function ProjectsSection({ projects }: { projects: Project[] }) {
   const sectionRef = useRef<HTMLElement>(null);
+  const { language } = useLanguage();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -53,7 +55,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
             className="text-4xl md:text-5xl font-light tracking-tight"
             style={{ fontFamily: '"Noto Serif Display", serif' }}
           >
-            <span className="italic">projects</span> on Github
+            <span className="italic">{language === "vi" ? "dự án" : "projects"}</span> {language === "vi" ? "trên" : "on"} Github
           </h2>
           {/* <Link
             href="/projects"
@@ -132,13 +134,12 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                     unoptimized={project.heroImage?.endsWith(".png")}
                   />
 
-                  {/* Dark Overlay with Information */}
                   <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center z-10 pointer-events-none">
                     <p
                       className="text-white text-base md:text-lg mb-4 line-clamp-3 leading-relaxed"
                       style={{ fontFamily: "var(--font-season-sans)" }}
                     >
-                      {project.description}
+                      {language === "vi" ? (project.descriptionVi || project.description) : project.description}
                     </p>
                     <div
                       className="flex flex-wrap justify-center gap-2"

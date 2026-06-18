@@ -5,10 +5,12 @@ import Image from "next/image";
 import gsap from "gsap";
 import { Icon } from "@iconify/react";
 import heroBg from "../../assets/backgrounds/hero/Black and White Minimalist Aesthetic Photography Collage Portfolio Presentation.png";
+import { useLanguage } from "../../context/LanguageContext";
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t, language, toggleLanguage } = useLanguage();
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const href = e.currentTarget.getAttribute("href");
@@ -71,57 +73,67 @@ export function HeroSection() {
           style={{ fontFamily: "var(--font-season-sans)" }}
         >
           <nav className="hero-fade-in relative flex items-center justify-between text-[0.65rem] font-medium uppercase tracking-[0.32em]">
-            <span className="relative z-20">THAO NGUYEN</span>
+            <span className="relative z-20">{t("hero.name")}</span>
 
             {/* Desktop Menu */}
-            <ul className="hidden items-center gap-6 md:flex">
-              <li>
-                <a
-                  className="transition-opacity hover:opacity-70"
-                  href="#home"
-                  onClick={handleScroll}
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  className="transition-opacity hover:opacity-70"
-                  href="#about"
-                  onClick={handleScroll}
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  className="transition-opacity hover:opacity-70"
-                  href="#projects"
-                  onClick={handleScroll}
-                >
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a
-                  className="transition-opacity hover:opacity-70"
-                  href="https://drive.google.com/file/d/1Xb9oO2wBsbZXyjb5ReU6GVFR85TCntoh/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Resume
-                </a>
-              </li>
-              <li>
-                <a
-                  className="transition-opacity hover:opacity-70"
-                  href="#contact"
-                  onClick={handleScroll}
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
+            <div className="hidden md:flex items-center gap-6">
+              <ul className="flex items-center gap-6">
+                <li>
+                  <a
+                    className="transition-opacity hover:opacity-70"
+                    href="#home"
+                    onClick={handleScroll}
+                  >
+                    {t("hero.nav.home")}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="transition-opacity hover:opacity-70"
+                    href="#about"
+                    onClick={handleScroll}
+                  >
+                    {t("hero.nav.about")}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="transition-opacity hover:opacity-70"
+                    href="#projects"
+                    onClick={handleScroll}
+                  >
+                    {t("hero.nav.projects")}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="transition-opacity hover:opacity-70"
+                    href="https://drive.google.com/file/d/1Xb9oO2wBsbZXyjb5ReU6GVFR85TCntoh/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t("hero.nav.resume")}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="transition-opacity hover:opacity-70"
+                    href="#contact"
+                    onClick={handleScroll}
+                  >
+                    {t("hero.nav.contact")}
+                  </a>
+                </li>
+              </ul>
+              <button 
+                onClick={toggleLanguage}
+                className="hover:opacity-70 transition-opacity flex items-center justify-center"
+                aria-label="Toggle language"
+                title="Toggle language"
+              >
+                <Icon icon="lucide:languages" width="22" height="22" />
+              </button>
+            </div>
 
             {/* Mobile Menu Toggle */}
             <button
@@ -148,47 +160,48 @@ export function HeroSection() {
                 href="#home"
                 onClick={handleScroll}
               >
-                Home
+                {t("hero.nav.home")}
               </a>
               <a
                 className="block transition-opacity hover:opacity-70"
                 href="#about"
                 onClick={handleScroll}
               >
-                About
+                {t("hero.nav.about")}
               </a>
               <a
                 className="block transition-opacity hover:opacity-70"
                 href="#projects"
                 onClick={handleScroll}
               >
-                Projects
+                {t("hero.nav.projects")}
               </a>
               <a
                 className="block transition-opacity hover:opacity-70"
-                href="https://drive.google.com/file/d/16clsoRooBAj8SQXjnMtLurCuIhwbEcZk/view?usp=sharing"
+                href="https://drive.google.com/file/d/1Xb9oO2wBsbZXyjb5ReU6GVFR85TCntoh/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Resume
-              </a>
-              <a
-                className="block transition-opacity hover:opacity-70"
-                href="YOUR_GOOGLE_DRIVE_CV_LINK_HERE"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                CV
+                {t("hero.nav.resume")}
               </a>
               <a
                 className="block transition-opacity hover:opacity-70"
                 href="#contact"
                 onClick={handleScroll}
               >
-                Contact
+                {t("hero.nav.contact")}
               </a>
+              <button 
+                onClick={() => {
+                  toggleLanguage();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="hover:opacity-70 transition-opacity flex items-center justify-center py-2"
+                aria-label="Toggle language"
+              >
+                <Icon icon="lucide:languages" width="24" height="24" />
+              </button>
             </div>
           </nav>
           <div className="hero-fade-in mt-4 h-px w-full bg-[#2c2c2c]/75" />
@@ -223,7 +236,7 @@ export function HeroSection() {
 
           <div className="hero-fade-in h-px w-full bg-[#2c2c2c]/75" />
           <div className="hero-fade-in mt-4 flex items-center justify-between text-[0.65rem] font-medium uppercase tracking-[0.32em]">
-            <span>UX/UI Designer</span>
+            <span>{t("hero.title")}</span>
             <span>@2026</span>
           </div>
         </div>
