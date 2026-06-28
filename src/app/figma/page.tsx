@@ -8,12 +8,13 @@ import { useLanguage } from "../../context/LanguageContext";
 import folderIcon1 from "../../assets/elements/folder.svg";
 import folderIcon2 from "../../assets/elements/folder_2.svg";
 import folderIcon3 from "../../assets/elements/folder_3.svg";
+import folderIcon4 from "../../assets/elements/folder_4.svg";
 
 const folders = [
   { id: 1, title: "(01) THOOI", icon: folderIcon1 },
   { id: 2, title: "(02) MURROR", icon: folderIcon2 },
   { id: 3, title: "(03) TIKTOK", icon: folderIcon3 },
-  { id: 4, title: "(01) THOOI", icon: folderIcon1 }, // Fallback to folderIcon1
+  { id: 4, title: "(04) HAPPYPAWS", icon: folderIcon4 },
 ];
 
 const thooiImages = [
@@ -62,23 +63,17 @@ const tiktokImages = [
 ];
 
 const thooi2Images = [
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_1_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_2_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_3_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_4_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_5_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_6_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_7_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_8_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_9_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_10_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_11_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_12_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_13_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_14_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_15_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_16_placeholder.png",
-  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1780812273/Tho2_17_placeholder.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1782666200/1_e6848f.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1782666208/2_qu58b8.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1782666208/3_dhfe0m.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1782666196/4_s58eua.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1782666197/5_a6cvuv.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1782666217/6_tlqkzl.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1782666208/7_urj4rr.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1782666210/8_ofybv4.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1782666205/9_y2pf6q.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1782666474/10_1_ylekui.png",
+  "https://res.cloudinary.com/duwlxwvhw/image/upload/v1782666196/12_aauzjm.png",
 ];
 
 export default function FigmaPage() {
@@ -140,17 +135,17 @@ export default function FigmaPage() {
       // Points for 4 corners of a rectangle (Top-Left, Top-Right, Bottom-Left, Bottom-Right)
       const basePositions = isMobile
         ? [
-            { x: -90, y: -130 },
-            { x: 90, y: -130 },
-            { x: -90, y: 130 },
-            { x: 90, y: 130 },
-          ]
+          { x: -90, y: -130 },
+          { x: 90, y: -130 },
+          { x: -90, y: 130 },
+          { x: 90, y: 130 },
+        ]
         : [
-            { x: -300, y: -100 },
-            { x: 300, y: -100 },
-            { x: -300, y: 180 },
-            { x: 300, y: 180 },
-          ];
+          { x: -300, y: -100 },
+          { x: 300, y: -100 },
+          { x: -300, y: 180 },
+          { x: 300, y: 180 },
+        ];
 
       items.forEach((item, i) => {
         const base = basePositions[i % basePositions.length];
@@ -225,7 +220,7 @@ export default function FigmaPage() {
 
   return (
     <main
-      className={`min-h-screen bg-[#151515] relative text-white figma-page-custom-cursor ${selectedFolderId === null ? "overflow-hidden" : "overflow-y-auto"
+      className={`bg-[#151515] relative text-white figma-page-custom-cursor ${selectedFolderId === null ? "h-[100dvh] overflow-hidden" : "min-h-[100dvh] overflow-y-auto"
         }`}
       ref={containerRef}
     >
@@ -329,8 +324,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
+                  </svg>
+                  <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
 
@@ -391,8 +386,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
+                  </svg>
+                  <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
             </div>
@@ -415,8 +410,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
+                  </svg>
+                  <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
 
@@ -451,8 +446,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
+                  </svg>
+                  <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
             </div>
@@ -475,8 +470,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
+                  </svg>
+                  <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
 
@@ -511,8 +506,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
+                  </svg>
+                  <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
             </div>
@@ -535,8 +530,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
+                  </svg>
+                  <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
 
@@ -571,8 +566,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
+                  </svg>
+                  <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
             </div>
@@ -594,8 +589,8 @@ export default function FigmaPage() {
                     strokeLinejoin="round"
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-                <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
+                  </svg>
+                  <span>{language === "vi" ? "Trở lại" : "Back to Folders"}</span>
                 </button>
               </div>
 

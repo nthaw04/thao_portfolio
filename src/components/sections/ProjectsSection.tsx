@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Project } from "../../types/project";
 import Image from "next/image";
 import { ClientIcon as Icon } from "../shared/ClientIcon";
@@ -11,6 +11,7 @@ import { useLanguage } from "../../context/LanguageContext";
 export function ProjectsSection({ projects }: { projects: Project[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const { language } = useLanguage();
+  const [activeProject, setActiveProject] = useState<number | null>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -87,7 +88,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
             z-index: 1;
             min-width: 0;
           }
-          .carousel-item:hover {
+          .carousel-item:hover, .carousel-item.is-active {
             flex: 1.5;
             height: 500px;
             z-index: 10;
@@ -98,7 +99,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
             flex: 1; /* Automatically take remaining height */
             transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
           }
-          .carousel-item:hover .carousel-item-inner {
+          .carousel-item:hover .carousel-item-inner, .carousel-item.is-active .carousel-item-inner {
             box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4);
           }
           .carousel-item-img {
@@ -107,7 +108,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
             object-fit: cover;
             transition: transform 0.8s ease;
           }
-          .carousel-item:hover .carousel-item-img {
+          .carousel-item:hover .carousel-item-img, .carousel-item.is-active .carousel-item-img {
             transform: scale(1.08); /* slight inner image zoom */
           }
         `,
@@ -118,7 +119,12 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
             {projects.map((project, idx) => (
               <div
                 key={`${project.slug}-${idx}`}
-                className="carousel-item group flex flex-col justify-between focus:outline-none"
+                className={`carousel-item group flex flex-col justify-between focus:outline-none ${activeProject === idx ? 'is-active' : ''}`}
+                onClick={() => {
+                  if (window.innerWidth < 768) {
+                    setActiveProject(activeProject === idx ? null : idx);
+                  }
+                }}
               >
                 <div className="carousel-item-inner relative overflow-hidden shrink-0 bg-zinc-800">
                   {/* Fallback image style in case heroImage is empty or 404 */}
@@ -134,7 +140,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                     unoptimized={project.heroImage?.endsWith(".png")}
                   />
 
-                  <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center z-10 pointer-events-none">
+                  <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 group-[.is-active]:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center z-10 pointer-events-none">
                     <p
                       className="text-white text-base md:text-lg mb-4 line-clamp-3 leading-relaxed"
                       style={{ fontFamily: "var(--font-season-sans)" }}
@@ -163,7 +169,8 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md"
+                        onClick={(e) => e.stopPropagation()}
+                        className="opacity-0 group-hover:opacity-100 group-[.is-active]:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0 group-[.is-active]:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md"
                         aria-label="Landing Page URL"
                         title="Landing Page"
                       >
@@ -175,7 +182,8 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                         href={project.liveUrlClient}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md delay-50"
+                        onClick={(e) => e.stopPropagation()}
+                        className="opacity-0 group-hover:opacity-100 group-[.is-active]:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0 group-[.is-active]:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md delay-50"
                         aria-label="Web Client URL"
                         title="Web Client"
                       >
@@ -191,7 +199,8 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md"
+                        onClick={(e) => e.stopPropagation()}
+                        className="opacity-0 group-hover:opacity-100 group-[.is-active]:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 group-[.is-active]:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md"
                         aria-label="Web Repository"
                         title="Web Repository"
                       >
@@ -203,7 +212,8 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                         href={project.githubUrlClient}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md delay-50"
+                        onClick={(e) => e.stopPropagation()}
+                        className="opacity-0 group-hover:opacity-100 group-[.is-active]:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 group-[.is-active]:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md delay-50"
                         aria-label="Web Client Repository"
                         title="Web Client Repository"
                       >
@@ -215,7 +225,8 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                         href={project.githubUrlMobile}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md delay-75"
+                        onClick={(e) => e.stopPropagation()}
+                        className="opacity-0 group-hover:opacity-100 group-[.is-active]:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 group-[.is-active]:translate-x-0 p-2.5 bg-white/10 hover:bg-[#AF1611] rounded-full text-white backdrop-blur-md delay-75"
                         aria-label="Mobile Repository"
                         title="Mobile App Repository"
                       >
